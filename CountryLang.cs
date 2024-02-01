@@ -2,8 +2,6 @@ namespace SunamoLang;
 
 #region For easy copy
 
-
-
 public class CountryLang
 {
     public static Dictionary<Langs, string> d = new Dictionary<Langs, string>();
