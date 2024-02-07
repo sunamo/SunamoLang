@@ -2,7 +2,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Platforms>AnyCPU;x86</Platforms>
-    <Version>24.2.1.2</Version>
+    <Version>24.2.7.1</Version>
     <Description>Support for language, independent of translating solution</Description>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
@@ -18,10 +18,13 @@
     <EmbeddedResource Remove="SunamoI18N\ResourcesDuo.resx" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="SunamoEnums" Version="24.2.1.1" />
-    <PackageReference Include="SunamoExceptions" Version="24.2.1.1" />
-    <PackageReference Include="SunamoStringGetLines" Version="24.2.1.1" />
-    <PackageReference Include="SunamoValues" Version="24.2.1.1" />
-    <PackageReference Include="SunamoXliffParser" Version="24.2.1.1" />
+    <PackageReference Include="SunamoEnums" Version="24.2.6.2" />
+    <PackageReference Include="SunamoExceptions" Version="24.2.6.3" />
+    <PackageReference Include="SunamoValues" Version="24.2.6.3" />
+    <PackageReference Include="SunamoXlfKeys" Version="24.2.6.2" />
+    <PackageReference Include="SunamoXliffParser" Version="24.2.6.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SunamoI18N\Values\" />
   </ItemGroup>
 </Project>
