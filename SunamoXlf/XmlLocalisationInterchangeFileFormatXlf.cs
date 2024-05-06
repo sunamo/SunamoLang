@@ -11,7 +11,7 @@ public class XmlLocalisationInterchangeFileFormatXlf
     {
         s = Path.GetFileNameWithoutExtension(s);
         List<string> parts = null;
-        if (s.Contains(AllStringsSE.lowbar))
+        if (s.Contains(AllStrings.lowbar))
         {
             parts = SHSE.SplitChar(s, AllCharsSE.lowbar);
         }

@@ -14,7 +14,7 @@ public partial class FSXlf
 
     public static void FileToDirectory(ref string dir)
     {
-        if (!dir.EndsWith(AllStringsSE.bs))
+        if (!dir.EndsWith(AllStrings.bs))
         {
             dir = Path.GetDirectoryName(dir);
         }
