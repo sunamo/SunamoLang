@@ -5,7 +5,7 @@ SunamoDevCode
 SunamoFileSystem
 #elif SunamoShared
 SunamoShared
-#else SunamoLangSunamoXlf
+#else
 SunamoLangSunamoXlf
 #endif
 ;

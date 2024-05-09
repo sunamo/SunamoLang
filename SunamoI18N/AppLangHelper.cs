@@ -2,7 +2,7 @@
 namespace
 #if SunamoConverters
 SunamoConverters
-#else SunamoLangSunamoI18N
+#else
 SunamoLangSunamoI18N
 #endif
 ;

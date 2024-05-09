@@ -3,7 +3,7 @@ namespace
 SunamoDevCode
 #elif SunamoShared
 SunamoShared
-#else SunamoLangSunamoXlf
+#else
 SunamoLangSunamoXlf
 #endif
 ;

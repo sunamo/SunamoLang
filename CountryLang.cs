@@ -1,7 +1,7 @@
 namespace
 #if SunamoShared
 SunamoShared
-#else SunamoLang
+#else
 SunamoLang
 #endif
 ;
