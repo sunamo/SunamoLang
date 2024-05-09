@@ -1,4 +1,12 @@
-namespace SunamoLang.SunamoXlf;
+namespace
+#if SunamoDevCode
+SunamoDevCode
+#elif SunamoShared
+SunamoShared
+#else SunamoLangSunamoXlf
+SunamoLangSunamoXlf
+#endif
+;
 
 /// <summary>
 /// Is here dont mix RL and RLData with intellisense

@@ -1,5 +1,11 @@
 
-namespace SunamoLang.SunamoXlf;
+namespace
+#if SunamoShared
+SunamoShared
+#else SunamoLangSunamoXlf
+SunamoLangSunamoXlf
+#endif
+;
 using SunamoLang.SunamoXlf.Data;
 
 

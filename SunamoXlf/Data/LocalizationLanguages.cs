@@ -1,4 +1,10 @@
-namespace SunamoLang.SunamoXlf.Data;
+namespace
+#if SunamoShared
+SunamoShared
+#else SunamoLangSunamoXlfData
+SunamoLangSunamoXlfData
+#endif
+;
 
 public class LocalizationLanguages
 {

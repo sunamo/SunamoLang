@@ -1,4 +1,14 @@
-namespace SunamoLang.SunamoXlf;
+namespace
+#if SunamoDevCode
+SunamoDevCode
+#elif SunamoFileSystem
+SunamoFileSystem
+#elif SunamoShared
+SunamoShared
+#else SunamoLangSunamoXlf
+SunamoLangSunamoXlf
+#endif
+;
 
 //using System;
 //using System.Collections.Generic;
@@ -7,7 +17,7 @@ namespace SunamoLang.SunamoXlf;
 //using System.Threading.Tasks;
 
 //namespace Xlf
-//{ 
+//{
 //public class DefaultPaths
 //{
 //        /// <summary>

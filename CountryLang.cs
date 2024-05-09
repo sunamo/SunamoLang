@@ -1,4 +1,10 @@
-namespace SunamoLang;
+namespace
+#if SunamoShared
+SunamoShared
+#else SunamoLang
+SunamoLang
+#endif
+;
 
 #region For easy copy
 

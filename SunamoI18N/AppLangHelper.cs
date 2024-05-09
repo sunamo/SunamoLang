@@ -1,5 +1,11 @@
 
-namespace SunamoLang.SunamoI18N;
+namespace
+#if SunamoConverters
+SunamoConverters
+#else SunamoLangSunamoI18N
+SunamoLangSunamoI18N
+#endif
+;
 using SunamoLang.SunamoI18N.Converts;
 using SunamoXlfKeys;
 

@@ -1,4 +1,10 @@
-namespace SunamoLang.SunamoXlf;
+namespace
+#if SunamoDevCode
+SunamoDevCode
+#else SunamoLangSunamoXlf
+SunamoLangSunamoXlf
+#endif
+;
 
 public class XmlLocalisationInterchangeFileFormatXlf
 {
