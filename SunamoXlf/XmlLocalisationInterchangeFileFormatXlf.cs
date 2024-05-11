@@ -2,7 +2,7 @@ namespace
 #if SunamoDevCode
 SunamoDevCode
 #else
-SunamoLangSunamoXlf
+SunamoLang
 #endif
 ;
 

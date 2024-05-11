@@ -5,7 +5,7 @@ SunamoDevCode
 #elif SunamoShared
 SunamoShared
 #else
-SunamoLangSunamoXlf
+SunamoLang
 #endif
 ;
 using SunamoLang.SunamoXlf.Data;

@@ -1,4 +1,4 @@
-namespace SunamoLang._sunamo;
+namespace SunamoLang;
 
 internal class CASH
 {

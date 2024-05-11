@@ -1,4 +1,4 @@
-namespace SunamoLang.SunamoI18N.Converts;
+namespace SunamoLang;
 
 /// <summary>
 /// AppLang/string

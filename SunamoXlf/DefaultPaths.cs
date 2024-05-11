@@ -6,7 +6,7 @@ SunamoFileSystem
 #elif SunamoShared
 SunamoShared
 #else
-SunamoLangSunamoXlf
+SunamoLang
 #endif
 ;
 

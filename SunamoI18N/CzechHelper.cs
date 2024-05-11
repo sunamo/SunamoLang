@@ -1,15 +1,10 @@
 
 using SunamoXlfKeys;
 
-namespace SunamoLang.SunamoI18N;
+namespace SunamoLang;
 public partial class CzechHelper
 {
     static Type type = typeof(CzechHelper);
-
-
-
-
-
 
     public static string Dear(bool sex)
     {

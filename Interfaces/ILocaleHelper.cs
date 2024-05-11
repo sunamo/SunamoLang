@@ -1,4 +1,4 @@
-namespace SunamoLang.Interfaces;
+namespace SunamoLang;
 
 public interface ILocaleHelper
 {

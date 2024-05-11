@@ -4,7 +4,7 @@ SunamoDevCode
 #elif SunamoShared
 SunamoShared
 #else
-SunamoLangSunamoXlf
+SunamoLang
 #endif
 ;
 

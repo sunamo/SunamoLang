@@ -1,4 +1,4 @@
-namespace SunamoLang.SunamoXlf;
+namespace SunamoLang;
 
 /// <summary>
 /// Load from files *.resources and *.resx. Nothing else

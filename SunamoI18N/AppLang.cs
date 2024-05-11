@@ -1,4 +1,4 @@
-namespace SunamoLang.SunamoI18N;
+namespace SunamoLang;
 
 public class AppLang
 {

@@ -1,4 +1,4 @@
-namespace SunamoLang.SunamoXlf.Enums;
+namespace SunamoLang;
 //namespace SunamoXlf.Enums;
 
 ///// <summary>

@@ -1,4 +1,4 @@
-namespace SunamoLang.SunamoXlf;
+namespace SunamoLang;
 
 /// <summary>
 ///

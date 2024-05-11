@@ -1,4 +1,4 @@
-namespace SunamoLang._sunamo;
+namespace SunamoLang;
 //namespace SunamoI18N._sunamo;
 
 ///// <summary>

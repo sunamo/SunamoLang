@@ -1,4 +1,6 @@
 
+namespace SunamoLang;
+
 namespace
 #if SunamoConverters
 SunamoConverters

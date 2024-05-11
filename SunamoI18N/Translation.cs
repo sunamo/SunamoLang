@@ -1,4 +1,4 @@
-namespace SunamoLang.SunamoI18N;
+namespace SunamoLang;
 
 /// <summary>
 /// Datová třída, obsahující pouze český text a jeho odpovídající anglický překlad
