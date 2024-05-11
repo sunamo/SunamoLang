@@ -6,8 +6,8 @@ SunamoConverters
 SunamoLangSunamoI18N
 #endif
 ;
-using SunamoLang.SunamoI18N.Converts;
-using SunamoXlfKeys;
+
+using System.Globalization;
 
 public static class AppLangHelper
 {
