@@ -19,11 +19,11 @@ public class XmlLocalisationInterchangeFileFormatXlf
         List<string> parts = null;
         if (s.Contains(AllStrings.lowbar))
         {
-            parts = SHSE.SplitChar(s, AllCharsSE.lowbar);
+            parts = SHSE.SplitChar(s, AllChars.lowbar);
         }
         else
         {
-            parts = SHSE.SplitChar(s, AllCharsSE.dot, AllCharsSE.dash);
+            parts = SHSE.SplitChar(s, AllChars.dot, AllChars.dash);
         }
         int sub = 2;
         if (s.Contains("min"))

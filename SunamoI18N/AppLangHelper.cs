@@ -166,7 +166,7 @@ public static class AppLangHelper
 
     public static Langs GetLang3(string d)
     {
-        if (d.Length == 5 && d[2] == AllCharsSE.dash)
+        if (d.Length == 5 && d[2] == AllChars.dash)
         {
             return GetLang2(d.Substring(0, 2));
         }
