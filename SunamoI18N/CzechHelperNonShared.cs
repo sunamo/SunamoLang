@@ -1,6 +1,6 @@
 
 namespace SunamoLang;
-using SunamoLang._sunamo;
+
 
 
 

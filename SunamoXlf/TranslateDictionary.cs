@@ -6,7 +6,7 @@ SunamoShared
 SunamoLang
 #endif
 ;
-using SunamoLang.SunamoXlf.Data;
+
 
 
 public class TranslateDictionary : IDictionary<string, string>
