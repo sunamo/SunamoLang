@@ -24,6 +24,33 @@
     <Compile Include="..\SunamoExceptions\OnlyInSE\Exc.cs" Link="_linked\SunamoExceptions\OnlyInSE\Exc.cs" />
     <Compile Include="..\SunamoExceptions\OnlyInSE\Types.cs" Link="_linked\SunamoExceptions\OnlyInSE\Types.cs" />
     <Compile Include="..\SunamoXlfKeys\XlfKeys.cs" Link="_linked\SunamoXlfKeys\XlfKeys.cs" />
+    <Compile Include="..\SunamoEnums\Enums\Langs.cs" Link="_linked\SunamoEnums\Enums\Langs.cs" />
+    <Compile Include="..\SunamoParsing\Parse.cs" Link="_linked\SunamoParsing\Parse.cs" />
+    <Compile Include="..\SunamoParsing\TryParse.cs" Link="_linked\SunamoParsing\TryParse.cs" />
+    <Compile Include="..\SunamoEnums\Enums\CzechEncodings.cs" Link="_linked\SunamoEnums\Enums\CzechEncodings.cs" />
+    <Compile Include="..\SunamoStringParts\SHParts.cs" Link="_linked\SunamoStringParts\SHParts.cs" />
+    <Compile Include="..\SunamoStringGetLines\SHGetLines.cs" Link="_linked\SunamoStringGetLines\SHGetLines.cs" />
+    <Compile Include="..\SunamoCollectionsShared\CASH.cs" Link="_linked\SunamoCollectionsShared\CASH.cs" />
+    <Compile Include="..\SunamoShared\Helpers\BasePathsHelper.cs" Link="_linked\SunamoShared\Helpers\BasePathsHelper.cs" />
+    <Compile Include="..\SunamoEnums\Enums\Platforms.cs" Link="_linked\SunamoEnums\Enums\Platforms.cs" />
+    <Compile Include="..\SunamoCollectionsGeneric\Collections\D.cs" Link="_linked\SunamoCollectionsGeneric\Collections\D.cs" />
+    <Compile Include="..\SunamoExceptions\InSunamoIsDerivedFrom\TFSE.cs" Link="_linked\SunamoExceptions\InSunamoIsDerivedFrom\TFSE.cs" />
+    <Compile Include="..\SunamoShared\Helpers\PD.cs" Link="_linked\SunamoShared\Helpers\PD.cs" />
+    <Compile Include="..\SunamoData\Data\StorageFolder.cs" Link="_linked\SunamoData\Data\StorageFolder.cs" />
+    <Compile Include="..\SunamoData\Data\StorageFile.cs" Link="_linked\SunamoData\Data\StorageFile.cs" />
+    <Compile Include="..\SunamoXliffParser\XlfDocument.cs" Link="_linked\SunamoXliffParser\XlfDocument.cs" />
+    <Compile Include="..\SunamoShared\Essential\VpsHelperSunamo.cs" Link="_linked\SunamoShared\Essential\VpsHelperSunamo.cs" />
+    <Compile Include="..\SunamoFubuCore\Descriptions\Description.cs" Link="_linked\SunamoFubuCore\Descriptions\Description.cs" />
+    <Compile Include="..\SunamoCollectionsGeneric\Collections\Joiner.cs" Link="_linked\SunamoCollectionsGeneric\Collections\Joiner.cs" />
+    <Compile Include="..\SunamoFubuCsProjFile\_NotMine\Templating\TextFile.cs" Link="_linked\SunamoFubuCsProjFile\_NotMine\Templating\TextFile.cs" />
+    <Compile Include="..\SunamoEnums\Enums\Display.cs" Link="_linked\SunamoEnums\Enums\Display.cs" />
+    <Compile Include="..\SunamoData\Data\Date.cs" Link="_linked\SunamoData\Data\Date.cs" />
+    <Compile Include="..\SunamoShared\RL\RL.cs" Link="_linked\SunamoShared\RL\RL.cs" />
+    <Compile Include="..\SunamoShared\Crypting\Hash.cs" Link="_linked\SunamoShared\Crypting\Hash.cs" />
+    <Compile Include="..\SunamoData\Data\Speed.cs" Link="_linked\SunamoData\Data\Speed.cs" />
+    <Compile Include="..\SunamoFubuCsProjFile\_NotMine\Content.cs" Link="_linked\SunamoFubuCsProjFile\_NotMine\Content.cs" />
+    <Compile Include="..\SunamoFubuCsProjFile\_NotMine\None.cs" Link="_linked\SunamoFubuCsProjFile\_NotMine\None.cs" />
+    <Compile Include="..\SunamoShared\Crypting\Password.cs" Link="_linked\SunamoShared\Crypting\Password.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="SunamoI18N\ResourcesDuo.resx" />

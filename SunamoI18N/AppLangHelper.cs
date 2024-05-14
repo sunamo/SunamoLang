@@ -3,6 +3,10 @@
 namespace
 #if SunamoConverters
 SunamoConverters
+#elif SunamoLang
+SunamoLang
+#elif SunamoLang
+SunamoLang
 #else
 SunamoLangSunamoI18N
 #endif
