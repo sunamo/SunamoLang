@@ -1,5 +1,3 @@
-
-
 namespace
 #if SunamoConverters
 SunamoConverters
@@ -11,9 +9,7 @@ SunamoLang
 SunamoLangSunamoI18N
 #endif
 ;
-
 using System.Globalization;
-
 public static class AppLangHelper
 {
     public static CultureInfo currentCulture = null;
@@ -55,12 +51,10 @@ public static class AppLangHelper
     private const string en0 = "Depending on the OS language";
     //const string en1 = "Depending on the country";
     public static AppLang selectedInCB = null;
-
     static AppLangHelper()
     {
         s_fixedLanguages.Add("cs", "\u010Ce\u0161tina");
         s_fixedLanguages.Add("en", sess.i18n(XlfKeys.English));
-
         List<string> systemLanguageCS = new List<string>();
         systemLanguageCS.Add(cs0);
         List<string> systemLanguageEN = new List<string>();
@@ -68,7 +62,6 @@ public static class AppLangHelper
         s_systemLanguages.Add("cs", systemLanguageCS);
         s_systemLanguages.Add("en", systemLanguageEN);
     }
-
     /// <summary>
     /// Vrátí název jazyku například do ComboBoxu na změnu jazyka
     /// Vrací pokud A1.TYpe není 0 správný text podle jazyka OS
@@ -107,7 +100,6 @@ public static class AppLangHelper
                     depending = CultureInfo.CurrentCulture;
                 }
             }
-
             if (depending.TwoLetterISOLanguageName == "cs")
             {
                 if (actual.Language == 0)
@@ -125,7 +117,6 @@ public static class AppLangHelper
         }
         return vr;
     }
-
     /// <summary>
     /// Metoda která mi vrátí jazyk ve kterém se má obsah zobrazit
     /// GetLang2 return from two letters lang
@@ -153,7 +144,6 @@ public static class AppLangHelper
         }
         return vr;
     }
-
     /// <summary>
     /// Používá se když chci vrátit jazyk ve výčtu Langs - A1 musí být obsah výčtu Langs, tedy cs nebo en
     /// 2 má v názvu proto že stejná metoda již existuje, ale ta mi vráti jazyk i podle OS
@@ -168,17 +158,14 @@ public static class AppLangHelper
         }
         return Langs.en;
     }
-
     public static Langs GetLang3(string d)
     {
         if (d.Length == 5 && d[2] == AllChars.dash)
         {
             return GetLang2(d.Substring(0, 2));
         }
-
         return GetLang2(d);
     }
-
     /// <summary>
     /// Vrátí CultureInfo dané země bez specifikace jazyka pro jazyk A1
     /// </summary>
@@ -194,10 +181,8 @@ public static class AppLangHelper
         {
             ci = new CultureInfo("en");
         }
-
         return ci;
     }
-
     /// <summary>
     /// Vrátí mi vyčet Langs, tedy jazyk na základě A1
     /// </summary>
@@ -213,7 +198,6 @@ public static class AppLangHelper
             return Langs.en;
         }
     }
-
     public static List<AppLang> ItemsToAddToComboBox(string settingsAl)
     {
         List<AppLang> vr = new List<AppLang>();
@@ -263,7 +247,6 @@ public static class AppLangHelper
                     }
                 }
                 vr.Add(al);
-
                 i++;
             }
         }

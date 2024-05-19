@@ -5,7 +5,6 @@ SunamoDevCode
 SunamoLang
 #endif
 ;
-
 public class XmlLocalisationInterchangeFileFormatXlf
 {
     #region Only in *Xlf.cs
@@ -35,7 +34,6 @@ public class XmlLocalisationInterchangeFileFormatXlf
         {
             return Langs.cs;
         }
-
         return Langs.en;
     }
     #endregion

@@ -7,14 +7,11 @@ SunamoDevCode
 SunamoLang
 #endif
 ;
-
 public class LocalizationLanguages
 {
     public string Cs;
     public string En;
-
     public LocalizationLanguages()
     {
-
     }
 }
