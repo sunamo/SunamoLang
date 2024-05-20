@@ -1,5 +1,10 @@
-
-namespace SunamoLang;
+namespace
+#if SunamoGetFiles
+SunamoGetFiles
+#else
+SunamoLang
+#endif
+;
 //namespace
 //#if SunamoDevCode
 //SunamoDevCode
