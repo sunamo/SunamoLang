@@ -129,7 +129,7 @@ C5 BE";
         input = input.Replace("3D\"", "=\"");
 
         //input = input.Replace("=3D", "=");
-        input = input.Replace(Consts.nl, "");
+        input = input.Replace("\n", "");
         input = input.Replace("\r", "");
         input = input.Replace("\n", "");
         input = input.Replace("</= ", "</");

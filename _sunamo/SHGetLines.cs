@@ -1,11 +1,11 @@
 
 namespace SunamoLang;
-//namespace SunamoI18N._sunamo;
+//namespace SunamoI18N;
 internal class SHGetLines
 {
     //internal static Func<string, List<string>> GetLines;
-    internal static List<string> GetLines(string s)
+    internal static List<string> GetLines(string v)
     {
-        return sv.Split(new string[] { v.Contains("\r\n") ? "\r\n" : "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        return v.Split(new string[] { v.Contains("\r\n") ? "\r\n" : "\n" }, StringSplitOptions.RemoveEmptyEntries).ToList();
     }
 }

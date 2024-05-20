@@ -1,3 +1,5 @@
+using SunamoLang;
+
 namespace
 #if SunamoDevCode
 SunamoDevCode
