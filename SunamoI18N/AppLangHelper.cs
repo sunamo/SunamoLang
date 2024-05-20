@@ -6,7 +6,7 @@ SunamoLang
 #elif SunamoLang
 SunamoLang
 #else
-SunamoLangSunamoI18N
+SunamoLang
 #endif
 ;
 using System.Globalization;

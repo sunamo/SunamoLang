@@ -1,3 +1,5 @@
+
+namespace SunamoLang;
 //namespace
 //#if SunamoDevCode
 //SunamoDevCode
