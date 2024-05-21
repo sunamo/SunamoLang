@@ -11,7 +11,7 @@ public class XlfDocument
 
     internal void LoadXml(string content)
     {
-        throw new NotImplementedException();
+        ThrowEx.NotImplementedMethod();
     }
 }
 

@@ -155,7 +155,7 @@ public partial class XlfResourcesH
                 {
                     if (item.TransUnits.Count() > 0)
                     {
-                        Debugger.Break();
+                        System.Diagnostics.Debugger.Break();
                     }
                 }
                 foreach (var tu in item.TransUnits)

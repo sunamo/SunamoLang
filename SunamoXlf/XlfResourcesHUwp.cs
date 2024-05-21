@@ -207,7 +207,7 @@ namespace SunamoLang;
 //                    if (item.TransUnits.Count() > 0)
 //                    {
 
-//                        Debugger.Break();
+//                        System.Diagnostics.Debugger.Break();
 //                    }
 //                }
 

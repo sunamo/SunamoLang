@@ -27,6 +27,7 @@
     <Compile Include="..\SunamoEnums\Enums\Platforms.cs" Link="_linked\SunamoEnums\Enums\Platforms.cs" />
     <Compile Include="..\SunamoEnums\Enums\CzechEncodings.cs" Link="_linked\SunamoEnums\Enums\CzechEncodings.cs" />
     <Compile Include="..\SunamoXlfKeys\XlfKeys.cs" Link="_linked\SunamoXlfKeys\XlfKeys.cs" />
+    <Compile Include="..\SunamoExceptions\InSunamoIsDerivedFrom\TFSE.cs" Link="_linked\SunamoExceptions\InSunamoIsDerivedFrom\TFSE.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="SunamoI18N\ResourcesDuo.resx" />
