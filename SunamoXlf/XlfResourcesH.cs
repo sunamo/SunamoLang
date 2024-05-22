@@ -141,7 +141,7 @@ public partial class XlfResourcesH
         #endregion
         return key;
     }
-    public static Dictionary<string, string> GetTransUnits(XlfDocument doc)
+    internal static Dictionary<string, string> GetTransUnits(XlfDocument doc)
     {
         Dictionary<string, string> result = new Dictionary<string, string>();
         var xlfFiles = doc.Files;

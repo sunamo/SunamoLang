@@ -5,9 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SunamoLang;
-public class XlfDocument
+internal class XlfDocument
 {
-    public IEnumerable<XlfFile> Files;
+    internal IEnumerable<XlfFile> Files;
 
     internal void LoadXml(string content)
     {
@@ -15,13 +15,13 @@ public class XlfDocument
     }
 }
 
-public class XlfFile
+internal class XlfFile
 {
-    public IEnumerable<XlfTransUnit> TransUnits;
+    internal IEnumerable<XlfTransUnit> TransUnits;
     internal string Original;
 }
 
-public class XlfTransUnit
+internal class XlfTransUnit
 {
     internal readonly string Id;
     internal string Target;
