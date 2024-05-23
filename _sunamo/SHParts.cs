@@ -1,10 +1,10 @@
 namespace SunamoLang;
 
-internal class SHParts
+public class SHParts
 {
-    internal static Func<string, string, bool, string> KeepAfterFirst;
-    internal static Func<string, string, string> RemoveAfterFirst;
-    //internal static Func<string, String[], bool> EndsWithArray;
-    //internal static Func<string, string> FirstCharUpper;
+    public static Func<string, string, bool, string> KeepAfterFirst;
+    public static Func<string, string, string> RemoveAfterFirst;
+    //public static Func<string, String[], bool> EndsWithArray;
+    //public static Func<string, string> FirstCharUpper;
 
 }

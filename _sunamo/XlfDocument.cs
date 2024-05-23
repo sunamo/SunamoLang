@@ -5,24 +5,24 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SunamoLang;
-internal class XlfDocument
+public class XlfDocument
 {
-    internal IEnumerable<XlfFile> Files;
+    public IEnumerable<XlfFile> Files;
 
-    internal void LoadXml(string content)
+    public void LoadXml(string content)
     {
         ThrowEx.NotImplementedMethod();
     }
 }
 
-internal class XlfFile
+public class XlfFile
 {
-    internal IEnumerable<XlfTransUnit> TransUnits;
-    internal string Original;
+    public IEnumerable<XlfTransUnit> TransUnits;
+    public string Original;
 }
 
-internal class XlfTransUnit
+public class XlfTransUnit
 {
-    internal readonly string Id;
-    internal string Target;
+    public readonly string Id;
+    public string Target;
 }

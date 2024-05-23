@@ -4,7 +4,7 @@ namespace SunamoLang;
 /// <summary>
 ///     Usage: Xlf
 /// </summary>
-internal enum Platforms
+public enum Platforms
 {
     None,
     Mb,

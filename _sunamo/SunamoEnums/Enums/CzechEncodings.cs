@@ -4,7 +4,7 @@ namespace SunamoLang;
 /// <summary>
 ///  from https://cs.wikipedia.org/wiki/K%C3%B3dov%C3%A1n%C3%AD_%C4%8De%C5%A1tiny
 /// </summary>
-internal enum CzechEncodings
+public enum CzechEncodings
 {
     ISO8859_2,
     Windows_1250,

@@ -1,7 +1,7 @@
 namespace SunamoLang;
 
-internal class CASH
+public class CASH
 {
-    internal static Action<string, List<string>> Prepend;
-    internal static Action<List<string>, string, string> Replace;
+    public static Action<string, List<string>> Prepend;
+    public static Action<List<string>, string, string> Replace;
 }
