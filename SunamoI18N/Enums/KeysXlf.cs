@@ -1,3 +1,5 @@
+
+namespace SunamoLang;
 public enum KeysXlf
 {
     ByUsingThisWebsiteYouAgreeToThis,

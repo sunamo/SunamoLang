@@ -1,3 +1,5 @@
+
+namespace SunamoLang;
 using SunamoLang;
 
 /// <summary>

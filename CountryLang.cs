@@ -1,3 +1,5 @@
+
+namespace SunamoLang;
 #region For easy copy
 public class CountryLang
 {

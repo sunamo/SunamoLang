@@ -1,4 +1,4 @@
-﻿namespace SunamoLang;
+namespace SunamoLang;
 
 public class BasePathsHelper
 {

@@ -1,3 +1,5 @@
+
+namespace SunamoLang;
 public class AllStrings
 {
     public const string dot = ".";

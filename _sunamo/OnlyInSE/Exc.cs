@@ -1,3 +1,5 @@
+
+namespace SunamoLang;
 using System.Diagnostics;
 using System.Text;
 
