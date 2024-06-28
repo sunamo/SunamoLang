@@ -1,12 +1,3 @@
-namespace
-#if SunamoShared
-SunamoShared
-#elif SunamoDevCode
-SunamoDevCode
-#else
-SunamoLang
-#endif
-;
 public class TranslateDictionary : IDictionary<string, string>
 {
     private static Type type = typeof(TranslateDictionary);

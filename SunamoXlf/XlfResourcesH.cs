@@ -1,16 +1,5 @@
 using SunamoLang;
 
-namespace
-#if SunamoDevCode
-SunamoDevCode
-#elif SunamoShared
-SunamoShared
-#elif SunamoXlfEngine
-SunamoXlfEngine
-#else
-SunamoLang
-#endif
-;
 /// <summary>
 /// Must be in shared
 /// In sunamo is not XliffParser and fmdev.ResX - these projects requires .net fw due to CodeDom

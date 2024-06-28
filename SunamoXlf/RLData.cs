@@ -1,14 +1,3 @@
-namespace
-#if SunamoDevCode
-SunamoDevCode
-#elif SunamoShared
-SunamoShared
-#elif SunamoValues
-SunamoValues
-#else
-SunamoLang
-#endif
-;
 /// <summary>
 /// Is here dont mix RL and RLData with intellisense
 /// </summary>

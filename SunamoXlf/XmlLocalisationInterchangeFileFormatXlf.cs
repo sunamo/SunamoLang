@@ -1,10 +1,3 @@
-namespace
-#if SunamoDevCode
-SunamoDevCode
-#else
-SunamoLang
-#endif
-;
 public class XmlLocalisationInterchangeFileFormatXlf
 {
     #region Only in *Xlf.cs

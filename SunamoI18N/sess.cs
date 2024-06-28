@@ -1,12 +1,3 @@
-namespace
-#if SunamoGetFiles
-SunamoGetFiles
-#elif SunamoDevCode
-SunamoDevCode
-#else
-SunamoLang
-#endif
-;
 //namespace
 //#if SunamoDevCode
 //SunamoDevCode

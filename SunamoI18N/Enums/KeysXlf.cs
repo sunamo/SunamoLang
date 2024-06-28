@@ -1,10 +1,3 @@
-namespace
-#if SunamoXlfEngine
-SunamoXlfEngine
-#else
-SunamoLang
-#endif
-;
 public enum KeysXlf
 {
     ByUsingThisWebsiteYouAgreeToThis,

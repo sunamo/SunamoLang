@@ -1,14 +1,3 @@
-namespace
-#if SunamoConverters
-SunamoConverters
-#elif SunamoLang
-SunamoLang
-#elif SunamoLang
-SunamoLang
-#else
-SunamoLang
-#endif
-;
 using System.Globalization;
 public static class AppLangHelper
 {
