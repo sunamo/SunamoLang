@@ -1,10 +1,3 @@
-namespace
-#if SunamoShared
-SunamoShared
-#else
-SunamoLang
-#endif
-;
 #region For easy copy
 public class CountryLang
 {
