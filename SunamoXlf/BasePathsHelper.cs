@@ -23,11 +23,11 @@ public class BasePathsHelper
     /// </summary>
     //public static string vs = null;
 
-    //static string bpMb => DefaultPaths.bpMb;
-    //static string bpQ => DefaultPaths.bpQ;
-    //static string bpVps => DefaultPaths.bpVps;
+    //static string bpMb => BasePathsHelper.bpMb;
+    //static string bpQ => BasePathsHelper.bpQ;
+    //static string bpVps => BasePathsHelper.bpVps;
 
-    //static string bpBb => DefaultPaths.bpBb;
+    //static string bpBb => BasePathsHelper.bpBb;
 
 
 
