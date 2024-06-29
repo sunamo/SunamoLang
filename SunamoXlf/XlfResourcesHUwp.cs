@@ -46,7 +46,7 @@ namespace SunamoLang;
 
 //        if (!PlatformInteropHelper.IsUwpWindowsStoreApp())
 //        {
-//            path = DefaultPaths.sunamoProject;
+//            path = BasePathsHelper.sunamoProject;
 //        }
 //        else
 //        {
