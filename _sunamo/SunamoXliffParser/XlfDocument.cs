@@ -14,15 +14,3 @@ internal class XlfDocument
         ThrowEx.NotImplementedMethod();
     }
 }
-
-internal class XlfFile
-{
-    internal IEnumerable<XlfTransUnit> TransUnits;
-    internal string Original;
-}
-
-internal class XlfTransUnit
-{
-    internal readonly string Id;
-    internal string Target;
-}
