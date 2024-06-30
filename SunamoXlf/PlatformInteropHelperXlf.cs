@@ -1,6 +1,6 @@
 namespace SunamoLang;
 
-public partial class PlatformInteropHelperXlf
+public class PlatformInteropHelperXlf
 {
     #region For easy copy
     public static bool IsSellingApp()

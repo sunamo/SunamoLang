@@ -3,7 +3,7 @@ namespace SunamoLang;
 /// <summary>
 ///
 /// </summary>
-public partial class TFSunExcXlf
+public class TFSunExcXlf
 {
     #region For easy copy
     public static List<byte> bomUtf8 = new List<byte> { 239, 187, 191 };

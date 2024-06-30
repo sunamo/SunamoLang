@@ -3,7 +3,7 @@ namespace SunamoLang;
 /// <summary>
 /// FSXlf - postfixy jsou píčovina. volám v tom metody stejné třídy. Můžu nahradit FS. v SunExc ale musel bych to zkopírovat zpět. to nese riziko že jsem přidal novou metodu kterou bych překopírováním ztratil. Krom toho to nedrží konvenci. V názvu souboru to nechám ať vidím na první dobrou co je co.
 /// </summary>
-public partial class RHSunExcXlf
+public class RHSunExcXlf
 {
     #region For easy copy
     public static object GetValueOfProperty(string name, Type type, object instance, bool ignoreCase)
