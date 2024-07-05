@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 internal class CASH
 {
-    public static List<string> Prepend(string v, List<string> toReplace)
+    internal static List<string> Prepend(string v, List<string> toReplace)
     {
         for (int i = 0; i < toReplace.Count; i++)
         {
@@ -21,7 +21,7 @@ internal class CASH
         return toReplace;
     }
 
-    public static string Replace(string s, string from, string to)
+    internal static string Replace(string s, string from, string to)
     {
         return s.Replace(from, to);
     }
