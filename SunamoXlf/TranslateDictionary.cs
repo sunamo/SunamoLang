@@ -1,4 +1,3 @@
-
 namespace SunamoLang.SunamoXlf;
 public class TranslateDictionary : IDictionary<string, string>
 {

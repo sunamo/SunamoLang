@@ -1,5 +1,3 @@
-using System.Resources;
-
 namespace SunamoLang.SunamoXlf;
 
 /// <summary>

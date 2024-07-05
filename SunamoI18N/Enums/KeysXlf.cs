@@ -1,4 +1,3 @@
-
 namespace SunamoLang.SunamoI18N.Enums;
 public enum KeysXlf
 {

@@ -25,3 +25,7 @@ global using SunamoLang._public.SunamoEnums.Enums;
 global using SunamoLang._sunamo.SunamoExceptions.InSunamoIsDerivedFrom;
 global using SunamoLang._sunamo.SunamoExceptions.OnlyInSE;
 global using SunamoLang._sunamo.SunamoExceptions._AddedToAllCsproj;
+global using System.Diagnostics;
+global using System.Net;
+global using System.Resources;
+global using System.Threading.Tasks;

@@ -1,6 +1,4 @@
-
 namespace SunamoLang.SunamoXlf;
-using SunamoLang;
 
 /// <summary>
 /// Must be in shared

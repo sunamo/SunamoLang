@@ -1,10 +1,4 @@
-
 namespace SunamoLang._sunamo;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 internal class CASH
@@ -35,4 +29,3 @@ internal class CASH
         //CAChangeContent.ChangeContent2(null, files_in, Replace, what, forWhat);
     }
 }
-

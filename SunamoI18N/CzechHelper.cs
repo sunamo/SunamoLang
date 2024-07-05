@@ -1,6 +1,3 @@
-
-
-
 namespace SunamoLang.SunamoI18N;
 
 public class CzechHelper

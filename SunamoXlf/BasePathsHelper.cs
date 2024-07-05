@@ -357,4 +357,3 @@ zde jsem měl nějkaou strašně divnou chybu .NETu
     public static string VisualStudio2017WoSlash = null;
     #endregion
 }
-
