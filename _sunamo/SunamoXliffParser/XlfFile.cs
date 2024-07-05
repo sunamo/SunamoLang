@@ -1,4 +1,4 @@
-﻿namespace SunamoLang;
+namespace SunamoLang._sunamo.SunamoXliffParser;
 
 internal class XlfFile
 {

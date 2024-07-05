@@ -1,5 +1,5 @@
 
-namespace SunamoLang;
+namespace SunamoLang.SunamoI18N;
 //namespace
 //#if SunamoDevCode
 //SunamoDevCode

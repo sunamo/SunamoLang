@@ -1,5 +1,5 @@
 
-namespace SunamoLang;
+namespace SunamoLang.SunamoXlf;
 using SunamoLang;
 
 /// <summary>

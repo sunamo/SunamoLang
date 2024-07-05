@@ -8,7 +8,7 @@ SunamoShared
 #elif SunamoXlfEngine
 SunamoXlfEngine
 #else
-SunamoLang
+SunamoLang.SunamoXlf
 #endif
 ;
 //using System;

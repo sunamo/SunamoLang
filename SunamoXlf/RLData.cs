@@ -1,5 +1,5 @@
 
-namespace SunamoLang;
+namespace SunamoLang.SunamoXlf;
 /// <summary>
 /// Is here dont mix RL and RLData with intellisense
 /// </summary>

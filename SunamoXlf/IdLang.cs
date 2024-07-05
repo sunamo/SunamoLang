@@ -1,4 +1,4 @@
-namespace SunamoLang;
+namespace SunamoLang.SunamoXlf;
 
 public class IdLang
 {

@@ -1,6 +1,6 @@
 using System.Resources;
 
-namespace SunamoLang;
+namespace SunamoLang.SunamoXlf;
 
 /// <summary>
 /// Load from files *.resources and *.resx. Nothing else

@@ -1,5 +1,5 @@
 
-namespace SunamoLang;
+namespace SunamoLang.SunamoXlf;
 public class TranslateDictionary : IDictionary<string, string>
 {
     private static Type type = typeof(TranslateDictionary);

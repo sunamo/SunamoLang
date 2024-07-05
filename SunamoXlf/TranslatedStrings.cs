@@ -1,4 +1,4 @@
-namespace SunamoLang;
+namespace SunamoLang.SunamoXlf;
 
 /// <summary>
 /// For using in content template etc

@@ -1,5 +1,5 @@
 
-namespace SunamoLang;
+namespace SunamoLang.SunamoI18N;
 using System.Globalization;
 public static class AppLangHelper
 {

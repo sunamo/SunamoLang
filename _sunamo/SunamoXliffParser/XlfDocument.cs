@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SunamoLang;
+namespace SunamoLang._sunamo.SunamoXliffParser;
 internal class XlfDocument
 {
     internal IEnumerable<XlfFile> Files;
