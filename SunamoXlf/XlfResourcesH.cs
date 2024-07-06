@@ -112,7 +112,7 @@ public class XlfResourcesH
         //    string xlfContentCs = rm.GetByteArrayAsString(fn);
         //    FS.CreateUpfoldersPsysicallyUnlessThere(file);
         //    //xlfContent = xlfContent.Skip(3);
-        //    File.WriteAllTextAsync(file, xlfContentCs, enc);
+        //    File.WriteAllText(file, xlfContentCs, enc);
         //    TFXlf.RemoveDoubleBomUtf8(file);
         //    fn = "sunamo_en_US";
         //    // Always true, in all apps I use _min. NEVER CHANGE IT!!!
@@ -122,7 +122,7 @@ public class XlfResourcesH
         //    }
         //    var file2 = appData.GetFileCommonSettings(fn + ".xlf");
         //    string xlfContentEn = rm.GetByteArrayAsString(fn);
-        //    File.WriteAllTextAsync(file2, xlfContentEn, enc);
+        //    File.WriteAllText(file2, xlfContentEn, enc);
         //    TFXlf.RemoveDoubleBomUtf8(file2);
         //    path = Path.Combine(appData.RootFolderCommon(true), "Settings");
         //}
