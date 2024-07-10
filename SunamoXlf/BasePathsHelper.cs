@@ -187,13 +187,13 @@ zde jsem měl nějkaou strašně divnou chybu .NETu
     /// For all is here sczRootPath
     /// edn with bs
     /// </summary>
-    public static string sczPath = Path.Combine(actualPlatform, @"Projects\sunamoWithoutLocalDep.cz\sunamo.cz\");
-    public static string sczOldPath = Path.Combine(actualPlatform, @"Projects\sunamoWithoutLocalDep.cz\sunamo.cz-old\");
-    public static string sczNsnPath = Path.Combine(actualPlatform, @"Projects\sunamoWithoutLocalDep.cz\sunamo.cz-nsn\");
+    public static string sczPath = Path.Combine(actualPlatform, @"Projects\PlatformIndependentNuGetPackages.cz\sunamo.cz\");
+    public static string sczOldPath = Path.Combine(actualPlatform, @"Projects\PlatformIndependentNuGetPackages.cz\sunamo.cz-old\");
+    public static string sczNsnPath = Path.Combine(actualPlatform, @"Projects\PlatformIndependentNuGetPackages.cz\sunamo.cz-nsn\");
     /// <summary>
     /// Ended with backslash
     /// </summary>
-    public static string sczRootPath = Path.Combine(actualPlatform, @"Projects\sunamoWithoutLocalDep.cz\");
+    public static string sczRootPath = Path.Combine(actualPlatform, @"Projects\PlatformIndependentNuGetPackages.cz\");
     public const string ProjectsFolderNameSlash = "Projects\\";
 
     #region vs
@@ -214,12 +214,12 @@ zde jsem měl nějkaou strašně divnou chybu .NETu
 
         bp = actualPlatform;
 
-        sunamo = bp + @"Projects\sunamoWithoutLocalDep\";
-        sunamoProject = bp + @"Projects\sunamoWithoutLocalDep\sunamo\";
+        sunamo = bp + @"Projects\PlatformIndependentNuGetPackages\";
+        sunamoProject = bp + @"Projects\PlatformIndependentNuGetPackages\sunamo\";
         vsProjects = bp + @"Projects\";
         vs = bp + @"Projects\";
-        KeysXlf = bp + @"Projects\sunamoWithoutLocalDep\sunamo\Enums\KeysXlf.cs";
-        DllSunamo = bp + @"Projects\sunamoWithoutLocalDep\dll\";
+        KeysXlf = bp + @"Projects\PlatformIndependentNuGetPackages\sunamo\Enums\KeysXlf.cs";
+        DllSunamo = bp + @"Projects\PlatformIndependentNuGetPackages\dll\";
         VisualStudio2017 = bp;
         VisualStudio2017WoSlash = bp.Substring(0, bp.Length - 1);
 
@@ -320,12 +320,12 @@ zde jsem měl nějkaou strašně divnou chybu .NETu
     //        bp = bpQ;
     //    }
 
-    //    sunamo = bp + @"Projects\sunamoWithoutLocalDep\";
-    //    sunamoProject = bp + @"Projects\sunamoWithoutLocalDep\sunamo\";
+    //    sunamo = bp + @"Projects\PlatformIndependentNuGetPackages\";
+    //    sunamoProject = bp + @"Projects\PlatformIndependentNuGetPackages\sunamo\";
     //    vsProjects = bp + @"Projects\";
     //    vs = bp + @"Projects\";
-    //    KeysXlf = bp + @"Projects\sunamoWithoutLocalDep\sunamo\Enums\KeysXlf.cs";
-    //    DllSunamo = bp + @"Projects\sunamoWithoutLocalDep\dll\";
+    //    KeysXlf = bp + @"Projects\PlatformIndependentNuGetPackages\sunamo\Enums\KeysXlf.cs";
+    //    DllSunamo = bp + @"Projects\PlatformIndependentNuGetPackages\dll\";
     //    VisualStudio2017 = bp;
     //    VisualStudio2017WoSlash = bp.Substring(0, bp.Length - 1);
 
