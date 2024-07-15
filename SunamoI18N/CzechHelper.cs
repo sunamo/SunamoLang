@@ -157,9 +157,9 @@ C5 BE";
 
             ThrowEx.DifferentCountInLists<string>("utf8hexL", utf8hexL, "czechLettersL", czechLettersL);
 
-            CASH.Prepend(" ", utf8hexL);
+            CA.Prepend(" ", utf8hexL);
 
-            CASH.Replace(utf8hexL, " ", "=");
+            CA.Replace(utf8hexL, " ", "=");
 
             for (int i = 0; i < czechLettersL.Count; i++)
             {
