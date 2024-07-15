@@ -1,6 +1,6 @@
-namespace SunamoLang._sunamo.SunamoXliffParser;
+namespace SunamoLang._public;
 
-internal class XlfFile
+public class XlfFileLang
 {
     internal IEnumerable<XlfTransUnit> TransUnits;
     internal string Original;
