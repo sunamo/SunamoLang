@@ -1,3 +1,5 @@
+using SunamoLang._public;
+
 namespace SunamoLang.SunamoXlf;
 
 /// <summary>
@@ -130,7 +132,7 @@ public class XlfResourcesH
         #endregion
         return key;
     }
-    internal static Dictionary<string, string> GetTransUnits(XlfDocument doc)
+    public static Dictionary<string, string> GetTransUnits(XlfDocumentLang doc)
     {
         Dictionary<string, string> result = new Dictionary<string, string>();
         var xlfFiles = doc.Files;
@@ -162,7 +164,7 @@ public class XlfResourcesH
     {
         bool isCzech = lang2 == Langs.cs;
         bool isEnglish = lang2 == Langs.en;
-        var doc = new XlfDocument();
+        var doc = new XlfDocumentLang();
         doc.LoadXml(content);
         var lang = lang2.ToString().ToLower();
         var xlfFiles = doc.Files.Where(d => d.Original.ToLower().Contains(lang));

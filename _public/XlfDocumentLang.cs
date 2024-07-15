@@ -1,5 +1,5 @@
-namespace SunamoLang._sunamo.SunamoXliffParser;
-internal class XlfDocument
+namespace SunamoLang._public;
+public class XlfDocumentLang
 {
     internal IEnumerable<XlfFile> Files;
 
