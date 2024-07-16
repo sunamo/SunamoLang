@@ -17,12 +17,12 @@ public class TranslatedStrings
 
     public void FillIfIsEmpty(string k)
     {
-        var v = RHSunExcXlf.GetValueOfProperty(k, type, Instance, false);
+        var v = RH.GetValueOfProperty(k, type, Instance, false);
 
         if (v.ToString() == string.Empty)
         {
             var tr = get(k);
-            RHSunExcXlf.SetValueOfProperty(k, type, Instance, false, tr);
+            RH.SetValueOfProperty(k, type, Instance, false, tr);
             //v = RH.GetValueOfProperty(k, type, Instance, false);
         }
     }
