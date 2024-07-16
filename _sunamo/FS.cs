@@ -3,6 +3,23 @@ namespace SunamoLang._sunamo;
 //namespace SunamoLang._sunamo.SunamoExceptions._AddedToAllCsproj;
 internal class FS
 {
+    #region For easy shared
+    public static string GetFullPath(string vr)
+    {
+        var result = Path.GetFullPath(vr);
+        return result;
+    }
+
+    public static void FileToDirectory(ref string dir)
+    {
+        if (!dir.EndsWith(AllStrings.bs))
+        {
+            dir = Path.GetDirectoryName(dir);
+        }
+    }
+
+    #endregion
+
     internal static void CreateUpfoldersPsysicallyUnlessThere(string nad)
     {
         CreateFoldersPsysicallyUnlessThere(Path.GetDirectoryName(nad));
@@ -22,7 +39,7 @@ nad
         while (true)
         {
             nad = Path.GetDirectoryName(nad);
-            
+
             if (Directory.Exists(nad))
             {
                 break;
