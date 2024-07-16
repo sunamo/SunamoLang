@@ -20,7 +20,7 @@ RemoveDoubleBomUtf8(string path)
 #if ASYNC
     await
 #endif
-TFSE.ReadAllBytes(path);
+TF.ReadAllBytes(path);
         var to = b.Count > 5 ? 6 : b.Count;
 
         for (int i = 3; i < to; i++)
@@ -41,7 +41,7 @@ TFSE.ReadAllBytes(path);
     #region Only in *Xlf.cs
     public static void WriteAllBytes(string file, List<byte> b)
     {
-        TFSE.WriteAllBytes(file, b);
+        TF.WriteAllBytes(file, b);
     }
     #endregion
 }

@@ -1,4 +1,5 @@
 namespace SunamoLang.SunamoI18N;
+
 public static class AppLangHelper
 {
     public static CultureInfo currentCulture = null;

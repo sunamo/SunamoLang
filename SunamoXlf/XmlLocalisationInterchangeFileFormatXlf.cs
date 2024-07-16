@@ -1,4 +1,5 @@
 namespace SunamoLang.SunamoXlf;
+
 public class XmlLocalisationInterchangeFileFormatXlf
 {
     #region Only in *Xlf.cs
