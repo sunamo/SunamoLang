@@ -1,6 +1,6 @@
-using SunamoLang._public;
 
 namespace SunamoLang.SunamoXlf;
+using SunamoLang._public;
 
 /// <summary>
 /// Must be in shared
