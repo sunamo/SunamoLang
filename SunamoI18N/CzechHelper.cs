@@ -2,7 +2,7 @@ namespace SunamoLang.SunamoI18N;
 
 public class CzechHelper
 {
-    const string utf8hex = @"C3 81
+    private const string utf8hex = @"C3 81
 C3 84
 C4 8C
 C4 8E
@@ -47,7 +47,7 @@ C3 BC
 C3 BD
 C5 BE";
 
-    const string czechLetters = @"Á
+    private const string czechLetters = @"Á
 Ä
 Č
 Ď
@@ -92,12 +92,9 @@ C5 BE";
 ý
 ž";
 
-    static Dictionary<string, string> fromUtf8hex = new Dictionary<string, string>();
+    private static readonly Dictionary<string, string> fromUtf8hex = new();
 
-    public CzechHelper()
-    {
-
-    }
+    private static Type type = typeof(CzechHelper);
 
     public static string ReplaceInHtmlFrom_UTF_8_Hex(string input)
     {
@@ -108,15 +105,9 @@ C5 BE";
     {
         if (s == CzechEncodings.UTF_8 && hex)
         {
-            if (fromUtf8hex.Count == 0)
-            {
-                CzechHelper.Init(CzechEncodings.UTF_8, true);
-            }
+            if (fromUtf8hex.Count == 0) Init(CzechEncodings.UTF_8, true);
 
-            foreach (var item in fromUtf8hex)
-            {
-                input = input.Replace((string)item.Key, item.Value);
-            }
+            foreach (var item in fromUtf8hex) input = input.Replace(item.Key, item.Value);
         }
 
         input = SHParts.KeepAfterFirst(input, "<!DOCTYPE html>", true);
@@ -155,44 +146,35 @@ C5 BE";
             var utf8hexL = SHGetLines.GetLines(utf8hex);
             var czechLettersL = SHGetLines.GetLines(czechLetters);
 
-            ThrowEx.DifferentCountInLists<string>("utf8hexL", utf8hexL, "czechLettersL", czechLettersL);
+            ThrowEx.DifferentCountInLists("utf8hexL", utf8hexL, "czechLettersL", czechLettersL);
 
             CA.Prepend(" ", utf8hexL);
 
             CA.Replace(utf8hexL, " ", "=");
 
-            for (int i = 0; i < czechLettersL.Count; i++)
-            {
-                fromUtf8hex.Add(utf8hexL[i], czechLettersL[i]);
-            }
+            for (var i = 0; i < czechLettersL.Count; i++) fromUtf8hex.Add(utf8hexL[i], czechLettersL[i]);
         }
     }
 
-    static Type type = typeof(CzechHelper);
-
     public static string Dear(bool sex)
     {
-        if (sex)
-        {
-            return "Mil\u00E1";
-        }
+        if (sex) return "Mil\u00E1";
         return "Mil\u00FD";
     }
 
     //
     public static string Esteemed(bool sex)
     {
-        if (sex)
-        {
-            return "Vážená";
-        }
+        if (sex) return "Vážená";
         return "Vážený";
     }
 
     public static string Honorable(bool sex, string dear, string name)
     {
         string f = null;
+
         #region MyRegion
+
         //if (ThisApp.l == Langs.en)
         //{
         //    f = sess.i18n(XlfKeys.Dear);
@@ -207,17 +189,14 @@ C5 BE";
         //}
 
         //f += AllStrings.space;
+
         #endregion
 
         if (sex)
-        {
             // its auto with dear
             f = dear + AllStrings.space + sess.i18n(XlfKeys.madam) + " " + name;
-        }
         else
-        {
             f = dear + AllStrings.space + sess.i18n(XlfKeys.sir) + " " + name;
-        }
 
         return char.ToUpper(f[0]) + f.Substring(1);
     }
@@ -225,10 +204,7 @@ C5 BE";
     public static bool GetSexFromSurname(string name)
     {
         // ová = á
-        if (name.EndsWith("ova") || name.EndsWith("á"))
-        {
-            return true;
-        }
+        if (name.EndsWith("ova") || name.EndsWith("á")) return true;
         return false;
     }
 }

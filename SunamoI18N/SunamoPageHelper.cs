@@ -1,10 +1,8 @@
 namespace SunamoLang.SunamoI18N;
 
-
-
 /// <summary>
-/// Tato třída je zde kvůli interoperibilitě s .web apss
-/// má 3. parametr string ale ten se nevyužívá
+///     Tato třída je zde kvůli interoperibilitě s .web apss
+///     má 3. parametr string ale ten se nevyužívá
 /// </summary>
 public class SunamoPageHelper
 {

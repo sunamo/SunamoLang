@@ -1,4 +1,5 @@
 namespace SunamoLang.SunamoI18N.Enums;
+
 public enum KeysXlf
 {
     ByUsingThisWebsiteYouAgreeToThis,
@@ -3543,5 +3544,5 @@ public enum KeysXlf
     NoCacheListingInTabs,
     AllCachesListingsInTabsProcessed,
     WasCreatedListOfCachesWithNameColon,
-    ToUseThisWebYouHaveToBeLogined,
+    ToUseThisWebYouHaveToBeLogined
 }

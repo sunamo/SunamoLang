@@ -1,19 +1,22 @@
 namespace SunamoLang.SunamoXlf;
 
 /// <summary>
-/// For using in content template etc
+///     For using in content template etc
 /// </summary>
 public class TranslatedStrings
 {
-    public static TranslatedStrings Instance = new TranslatedStrings();
-    static Type type = typeof(TranslatedStrings);
+    public static TranslatedStrings Instance = new();
+    private static readonly Type type = typeof(TranslatedStrings);
+
+    public Func<string, string> get = null;
 
     private TranslatedStrings()
     {
-
     }
 
-    public Func<string, string> get = null;
+    public string SetAsDefault { get; set; } = string.Empty;
+
+    public string Delete { get; set; } = string.Empty;
 
     public void FillIfIsEmpty(string k)
     {
@@ -26,8 +29,4 @@ public class TranslatedStrings
             //v = RH.GetValueOfProperty(k, type, Instance, false);
         }
     }
-
-    public string SetAsDefault { get; set; } = string.Empty;
-
-    public string Delete { get; set; } = string.Empty;
 }

@@ -1,9 +1,5 @@
 namespace SunamoLang._public.SunamoEnums.Enums;
 
-
-
-
-
 public enum CzechEncodings
 {
     ISO8859_2,

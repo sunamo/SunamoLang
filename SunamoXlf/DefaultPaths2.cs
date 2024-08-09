@@ -8,7 +8,7 @@ SunamoShared
 #elif SunamoXlfEngine
 SunamoXlfEngine
 #else
-SunamoLang.SunamoXlf
+    SunamoLang.SunamoXlf
 #endif
 ;
 //using System;
@@ -60,5 +60,4 @@ SunamoLang.SunamoXlf
 
 public class DefaultPaths : BasePathsHelper
 {
-
 }

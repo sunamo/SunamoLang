@@ -1,12 +1,12 @@
 namespace SunamoLang.SunamoI18N.Converts;
 
 /// <summary>
-/// AppLang/string
+///     AppLang/string
 /// </summary>
 public static class AppLangConverter //: ISimpleConverter<AppLang, string>
 {
     /// <summary>
-    /// A1 - two chars number
+    ///     A1 - two chars number
     /// </summary>
     /// <param name="b"></param>
     public static AppLang ConvertTo(string b)
@@ -16,6 +16,6 @@ public static class AppLangConverter //: ISimpleConverter<AppLang, string>
 
     public static string ConvertFrom(AppLang t)
     {
-        return t.Type.ToString() + t.Language.ToString();
+        return t.Type + t.Language.ToString();
     }
 }

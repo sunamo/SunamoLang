@@ -1,15 +1,15 @@
-
 namespace SunamoLang.SunamoXlf;
-using SunamoLang._public;
 
 /// <summary>
-/// Must be in shared
-/// In sunamo is not XliffParser and fmdev.ResX - these projects requires .net fw due to CodeDom
+///     Must be in shared
+///     In sunamo is not XliffParser and fmdev.ResX - these projects requires .net fw due to CodeDom
 /// </summary>
 public class XlfResourcesH
 {
     public static bool initialized = false;
-    static Type type = typeof(XlfResourcesH);
+    private static Type type = typeof(XlfResourcesH);
+    private static string previousKey;
+
     public static string PathToXlfSunamo(Langs l)
     {
         var p = BasePathsHelper.vs + @"sunamo\sunamo\MultilingualResources\sunamo.";
@@ -25,11 +25,19 @@ public class XlfResourcesH
                 ThrowEx.NotImplementedCase(l);
                 break;
         }
+
         return p + ".xlf";
     }
-    static string previousKey = null;
+
+    public static string SaveResouresToRL(string VpsHelperSunamo_SunamoProject, LocalizationLanguages ll)
+    {
+        return SaveResouresToRL<string, string>(null, VpsHelperSunamo_SunamoProject, ll);
+    }
+
     #region Main worker
+
     #region Less sophisficated - Loading always from file
+
     ///// <summary>
     ///// 2. loading from xlf files
     ///// </summary>
@@ -56,10 +64,13 @@ public class XlfResourcesH
     //    }
     //    return key;
     //}
+
     #endregion
+
     #region More sophisficated - If is not my computer, reading from resources
+
     /// <summary>
-    /// A2 can be string.Empty
+    ///     A2 can be string.Empty
     /// </summary>
     /// <typeparam name="StorageFolder"></typeparam>
     /// <typeparam name="StorageFile"></typeparam>
@@ -68,12 +79,10 @@ public class XlfResourcesH
     /// <param name="existsDirectory"></param>
     /// <param name="appData"></param>
     /// <returns></returns>
-    public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath, LocalizationLanguages ll)
+    public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath,
+        LocalizationLanguages ll)
     {
-        if (previousKey == key && previousKey != null)
-        {
-            return null;
-        }
+        if (previousKey == key && previousKey != null) return null;
         previousKey = key;
         // cant be inicialized - after cs is set initialized to true and skip english
         //initialized = true;
@@ -87,7 +96,9 @@ public class XlfResourcesH
         ProcessXlfContent(Langs.cs, ll.Cs);
         ProcessXlfContent(Langs.en, ll.En);
         // #endregion
+
         #region 2) Loading from files - obsolete
+
         //var exists = false;
         //exists = MyPc.Instance.IsMyComputerOrVps();
         //if (appData == null)
@@ -129,41 +140,36 @@ public class XlfResourcesH
         //    path = Path.Combine(appData.RootFolderCommon(true), "Settings");
         //}
         //ProcessXlfFiles(path); 
+
         #endregion
+
         return key;
     }
+
     public static Dictionary<string, string> GetTransUnits(XlfDocumentLang doc)
     {
-        Dictionary<string, string> result = new Dictionary<string, string>();
+        var result = new Dictionary<string, string>();
         var xlfFiles = doc.Files;
         if (xlfFiles.Count() != 0)
-        {
             // Win every xlf will be t least two WPF.TESTS/PROPERTIES/RESOURCES.RESX and WPF.TESTS/RESOURCES/EN-US.RESX
             foreach (var item in xlfFiles)
             {
                 // like WPF.TESTS/PROPERTIES/
                 if (item.Original.EndsWith("/RESOURCES.RESX"))
-                {
                     if (item.TransUnits.Count() > 0)
-                    {
-                        System.Diagnostics.Debugger.Break();
-                    }
-                }
+                        Debugger.Break();
                 foreach (var tu in item.TransUnits)
-                {
                     if (!result.ContainsKey(tu.Id))
-                    {
                         result.Add(tu.Id, tu.Target);
-                    }
-                }
             }
-        }
+
         return result;
     }
+
     private static void ProcessXlfContent(Langs lang2, string content)
     {
-        bool isCzech = lang2 == Langs.cs;
-        bool isEnglish = lang2 == Langs.en;
+        var isCzech = lang2 == Langs.cs;
+        var isEnglish = lang2 == Langs.en;
         var doc = new XlfDocumentLang();
         doc.LoadXml(content);
         var lang = lang2.ToString().ToLower();
@@ -172,28 +178,18 @@ public class XlfResourcesH
         {
             var xlfFile = xlfFiles.First();
             foreach (var u in xlfFile.TransUnits)
-            {
                 if (isCzech)
                 {
-                    if (!RLData.cs.ContainsKey(u.Id))
-                    {
-                        RLData.cs.Add(u.Id, u.Target);
-                    }
+                    if (!RLData.cs.ContainsKey(u.Id)) RLData.cs.Add(u.Id, u.Target);
                 }
                 else if (isEnglish)
                 {
-                    if (!RLData.en.ContainsKey(u.Id))
-                    {
-                        RLData.en.Add(u.Id, u.Target);
-                    }
+                    if (!RLData.en.ContainsKey(u.Id)) RLData.en.Add(u.Id, u.Target);
                 }
-                else
-                {
-                    //throw new Exception("Invalid file " + file + ", please delete it");
-                }
-            }
+            //throw new Exception("Invalid file " + file + ", please delete it");
         }
     }
+
     private static string Fn(Langs cs)
     {
         string fn = null;
@@ -209,9 +205,12 @@ public class XlfResourcesH
                 ThrowEx.NotImplementedCase(cs);
                 break;
         }
+
         return fn;
     }
+
     #region Obsolete - loading from files
+
     //private static void ProcessXlfFiles(string path)
     //{
     //    var files = Directory.GetFiles(path, "*.xlf", SearchOption.TopDirectoryOnly);
@@ -230,11 +229,10 @@ public class XlfResourcesH
     //    var doc = new XlfDocument(file);
     //    return GetTransUnits(doc);
     //} 
+
     #endregion
+
     #endregion
+
     #endregion
-    public static string SaveResouresToRL(string VpsHelperSunamo_SunamoProject, LocalizationLanguages ll)
-    {
-        return SaveResouresToRL<string, string>(null, VpsHelperSunamo_SunamoProject, ll);
-    }
 }

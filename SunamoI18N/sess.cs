@@ -1,4 +1,5 @@
 namespace SunamoLang.SunamoI18N;
+
 //namespace
 //#if SunamoDevCode
 //SunamoDevCode
@@ -11,6 +12,7 @@ namespace SunamoLang.SunamoI18N;
 public class sess
 {
     private static readonly Type type = typeof(sess);
+
     /// <summary>
     ///     Usage: Exceptions.IsNotWindowsPathFormat
     /// </summary>
@@ -30,6 +32,7 @@ public class sess
                 ThrowEx.NotImplementedCase(k);
                 break;
         }
+
         return null;
     }
 }
