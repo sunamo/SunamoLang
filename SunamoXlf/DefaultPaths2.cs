@@ -1,16 +1,5 @@
-namespace
-#if SunamoDevCode
-SunamoDevCode
-#elif SunamoFileSystem
-SunamoFileSystem
-#elif SunamoShared
-SunamoShared
-#elif SunamoXlfEngine
-SunamoXlfEngine
-#else
-    SunamoLang.SunamoXlf
-#endif
-;
+
+
 //using System;
 //using System.Collections.Generic;
 //using System.Linq;

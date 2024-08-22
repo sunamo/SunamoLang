@@ -15,7 +15,6 @@ global using SunamoLang.SunamoXlf.Data;
 global using SunamoLang._sunamo.SunamoStringGetLines;
 global using SunamoLang._sunamo.SunamoStringParts;
 global using SunamoLang._sunamo.SunamoValues;
-
 global using SunamoLang._public.SunamoEnums.Enums;
 global using SunamoLang._sunamo.SunamoExceptions.OnlyInSE;
 global using System.Diagnostics;
