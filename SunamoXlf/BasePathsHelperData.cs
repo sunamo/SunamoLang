@@ -74,7 +74,7 @@ public partial class BasePathsHelper
     /// <summary>
     ///     E:\Documents\vs\Projects\
     /// </summary>
-    //public static string vsProjects;
+    public static string eVsProjects = @"E:\vs\Projects\";
 
     /// <summary>
     ///     E:\Documents\vs\Projects\
