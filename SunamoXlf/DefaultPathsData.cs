@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-public partial class BasePathsHelper
+public partial class DefaultPaths
 {
     public const string eVs2 = @"E:\vs2\";
     public const string eVs = @"E:\vs\";
@@ -75,6 +75,8 @@ public partial class BasePathsHelper
     ///     E:\Documents\vs\Projects\
     /// </summary>
     public static string eVsProjects = @"E:\vs\Projects\";
+
+    public const string eVsProjectsPinp = @"E:\vs\Projects\PlatformIndependentNuGetPackages\";
 
     /// <summary>
     ///     E:\Documents\vs\Projects\

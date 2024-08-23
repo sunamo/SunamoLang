@@ -1,6 +1,6 @@
 namespace SunamoLang.SunamoXlf;
 
-public partial class BasePathsHelper
+public partial class DefaultPaths
 {
 
 
@@ -35,7 +35,7 @@ public partial class BasePathsHelper
     //}
 
 
-    static BasePathsHelper()
+    static DefaultPaths()
     {
 
         //bp = eVs;

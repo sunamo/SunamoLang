@@ -47,6 +47,6 @@
 //    }
 //}
 
-public class DefaultPaths : BasePathsHelper
+public class DefaultPaths : SunamoLang.SunamoXlf.DefaultPaths
 {
 }
