@@ -15,11 +15,11 @@ void
 #endif
 RemoveDoubleBomUtf8(string path)
     {
-        var b =
+        var b = (
 #if ASYNC
     await
 #endif
-SunamoExceptions.InSunamoIsDerivedFrom.TF.ReadAllBytes(path);
+File.ReadAllBytesAsync(path)).ToList();
         var to = b.Count > 5 ? 6 : b.Count;
 
         for (int i = 3; i < to; i++)
@@ -40,7 +40,7 @@ SunamoExceptions.InSunamoIsDerivedFrom.TF.ReadAllBytes(path);
     #region Only in *Xlf.cs
     public static void WriteAllBytes(string file, List<byte> b)
     {
-        SunamoExceptions.InSunamoIsDerivedFrom.TF.WriteAllBytes(file, b);
+        File.WriteAllBytes(file, b.ToArray());
     }
     #endregion
 }
