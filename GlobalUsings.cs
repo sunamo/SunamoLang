@@ -13,7 +13,7 @@ global using SunamoLang.SunamoI18N.Converts;
 global using SunamoLang.SunamoXlf.Data;
 global using SunamoLang._sunamo.SunamoStringGetLines;
 global using SunamoLang._sunamo.SunamoStringParts;
-global using SunamoLang._sunamo.SunamoValues;
+global using SunamoLang;
 global using SunamoLang._public.SunamoEnums.Enums;
 global using SunamoLang._sunamo.SunamoExceptions;
 global using System.Diagnostics;

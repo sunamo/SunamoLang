@@ -98,13 +98,13 @@ public static class AppLangHelper
             if (depending.TwoLetterISOLanguageName == "cs")
             {
                 if (actual.Language == 0)
-                    vr = cs0 + AllStrings.swda +
+                    vr = cs0 + "-" +
                          s_fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
             }
             else //if (depending.TwoLetterISOLanguageName == "en")
             {
                 if (actual.Language == 0)
-                    vr = en0 + AllStrings.swda +
+                    vr = en0 + "-" +
                          s_fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
             }
         }
@@ -150,7 +150,7 @@ public static class AppLangHelper
 
     public static Langs GetLang3(string d)
     {
-        if (d.Length == 5 && d[2] == AllChars.dash) return GetLang2(d.Substring(0, 2));
+        if (d.Length == 5 && d[2] == '-') return GetLang2(d.Substring(0, 2));
         return GetLang2(d);
     }
 

@@ -5,9 +5,9 @@ namespace SunamoLang._sunamo;
 internal class TF
 {
     #region For easy copy
-    public static List<byte> bomUtf8 = new List<byte> { 239, 187, 191 };
+    internal static List<byte> bomUtf8 = new List<byte> { 239, 187, 191 };
 
-    public static
+    internal static
 #if ASYNC
     async Task
 #else
@@ -38,7 +38,7 @@ File.ReadAllBytesAsync(path)).ToList();
     #endregion
 
     #region Only in *Xlf.cs
-    public static void WriteAllBytes(string file, List<byte> b)
+    internal static void WriteAllBytes(string file, List<byte> b)
     {
         File.WriteAllBytes(file, b.ToArray());
     }

@@ -12,10 +12,10 @@ public class XmlLocalisationInterchangeFileFormatXlf
     {
         s = Path.GetFileNameWithoutExtension(s);
         List<string> parts = null;
-        if (s.Contains(AllStrings.lowbar))
-            parts = SHSplit.SplitCharMore(s, AllChars.lowbar);
+        if (s.Contains("_"))
+            parts = SHSplit.SplitCharMore(s, '_');
         else
-            parts = SHSplit.SplitCharMore(s, AllChars.dot, AllChars.dash);
+            parts = SHSplit.SplitCharMore(s, '.', '-');
         var sub = 2;
         if (s.Contains("min")) sub++;
         var beforeLast = parts[parts.Count - sub].ToLower();

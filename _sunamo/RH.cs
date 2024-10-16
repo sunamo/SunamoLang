@@ -5,13 +5,13 @@ namespace SunamoLang._sunamo;
 internal class RH
 {
     #region For easy copy
-    public static object GetValueOfProperty(string name, Type type, object instance, bool ignoreCase)
+    internal static object GetValueOfProperty(string name, Type type, object instance, bool ignoreCase)
     {
         PropertyInfo[] pis = type.GetProperties();
         return GetValue(name, type, instance, pis, ignoreCase, null);
     }
 
-    public static object SetValueOfProperty(string name, Type type, object instance, bool ignoreCase, object v)
+    internal static object SetValueOfProperty(string name, Type type, object instance, bool ignoreCase, object v)
     {
         PropertyInfo[] pis = type.GetProperties();
         return SetValue(name, type, instance, pis, ignoreCase, v);
@@ -49,17 +49,17 @@ internal class RH
         return null;
     }
 
-    public static object GetValue(string name, Type type, object instance, IList pis, bool ignoreCase, object v)
+    internal static object GetValue(string name, Type type, object instance, IList pis, bool ignoreCase, object v)
     {
         return GetOrSetValue(name, type, instance, pis, ignoreCase, GetValue, v);
     }
 
-    public static object SetValue(string name, Type type, object instance, IList pis, bool ignoreCase, object v)
+    internal static object SetValue(string name, Type type, object instance, IList pis, bool ignoreCase, object v)
     {
         return GetOrSetValue(name, type, instance, pis, ignoreCase, SetValue, v);
     }
 
-    public static object GetOrSetValue(string name, Type type, object instance, IList pis, bool ignoreCase, Func<object, MemberInfo[], object, object> getOrSet, object v)
+    internal static object GetOrSetValue(string name, Type type, object instance, IList pis, bool ignoreCase, Func<object, MemberInfo[], object, object> getOrSet, object v)
     {
         if (ignoreCase)
         {
@@ -95,7 +95,7 @@ internal class RH
         return null;
     }
 
-    public static bool ExistsClass(string className)
+    internal static bool ExistsClass(string className)
     {
         var type2 = (from assembly in AppDomain.CurrentDomain.GetAssemblies()
                      from type in assembly.GetTypes()

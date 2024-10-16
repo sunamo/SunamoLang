@@ -188,15 +188,15 @@ C5 BE";
         //    ThrowEx.NotImplementedCase(ThisApp.l);
         //}
 
-        //f += AllStrings.space;
+        //f += "";
 
         #endregion
 
         if (sex)
             // its auto with dear
-            f = dear + AllStrings.space + sess.i18n(XlfKeys.madam) + " " + name;
+            f = dear + "" + sess.i18n(XlfKeys.madam) + " " + name;
         else
-            f = dear + AllStrings.space + sess.i18n(XlfKeys.sir) + " " + name;
+            f = dear + "" + sess.i18n(XlfKeys.sir) + " " + name;
 
         return char.ToUpper(f[0]) + f.Substring(1);
     }

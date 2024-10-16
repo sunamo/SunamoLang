@@ -1,18 +1,17 @@
 namespace SunamoLang._sunamo;
-
 //namespace SunamoLang._sunamo.SunamoExceptions._AddedToAllCsproj;
 internal class FS
 {
     #region For easy shared
-    public static string GetFullPath(string vr)
+    internal static string GetFullPath(string vr)
     {
         var result = Path.GetFullPath(vr);
         return result;
     }
 
-    public static void FileToDirectory(ref string dir)
+    internal static void FileToDirectory(ref string dir)
     {
-        if (!dir.EndsWith(AllStrings.bs))
+        if (!dir.EndsWith("\""))
         {
             dir = Path.GetDirectoryName(dir);
         }
