@@ -20,3 +20,4 @@ global using System.Resources;
 global using System.Threading.Tasks;
 global using SunamoLang._public;
 global using System.Net;
+global using System.Diagnostics.CodeAnalysis;
