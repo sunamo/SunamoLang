@@ -194,9 +194,9 @@ C5 BE";
 
         if (sex)
             // its auto with dear
-            f = dear + "" + sess.i18n(XlfKeys.madam) + " " + name;
+            f = dear + " " + sess.i18n(XlfKeys.madam) + " " + name;
         else
-            f = dear + "" + sess.i18n(XlfKeys.sir) + " " + name;
+            f = dear + " " + sess.i18n(XlfKeys.sir) + " " + name;
 
         return char.ToUpper(f[0]) + f.Substring(1);
     }

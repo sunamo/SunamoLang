@@ -21,3 +21,6 @@ global using System.Threading.Tasks;
 global using SunamoLang._public;
 global using System.Net;
 global using System.Diagnostics.CodeAnalysis;
+global using SunamoLang;
+global using SunamoLang.SunamoI18N;
+global using SunamoLang.SunamoI18N.Enums;

@@ -2,8 +2,6 @@ namespace SunamoLang.SunamoXlf;
 
 public partial class DefaultPaths
 {
-
-
     //public static string actualPlatformParent
     //{
     //    get
