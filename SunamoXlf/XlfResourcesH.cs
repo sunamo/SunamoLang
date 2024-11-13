@@ -12,7 +12,7 @@ public class XlfResourcesH
 
     public static string PathToXlfSunamo(Langs l)
     {
-        var p = DefaultPaths.eVs + @"sunamo\sunamo\MultilingualResources\sunamo.";
+        var p = @"E:\vs\Projects\PlatformIndependentNuGetPackages\sunamo\MultilingualResources\sunamo.";
         switch (l)
         {
             case Langs.cs:
