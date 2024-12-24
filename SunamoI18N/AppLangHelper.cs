@@ -55,7 +55,7 @@ public static class AppLangHelper
     static AppLangHelper()
     {
         s_fixedLanguages.Add("cs", "\u010Ce\u0161tina");
-        s_fixedLanguages.Add("en", sess.i18n(XlfKeys.English));
+        s_fixedLanguages.Add("en", Translate.FromKey(XlfKeys.English));
         var systemLanguageCS = new List<string>();
         systemLanguageCS.Add(cs0);
         var systemLanguageEN = new List<string>();

@@ -177,7 +177,7 @@ C5 BE";
 
         //if (ThisApp.l == Langs.en)
         //{
-        //    f = sess.i18n(XlfKeys.Dear);
+        //    f = Translate.FromKey(XlfKeys.Dear);
         //}
         //else if(ThisApp.l == Langs.cs)
         //{
@@ -194,9 +194,9 @@ C5 BE";
 
         if (sex)
             // its auto with dear
-            f = dear + " " + sess.i18n(XlfKeys.madam) + " " + name;
+            f = dear + " " + Translate.FromKey(XlfKeys.madam) + " " + name;
         else
-            f = dear + " " + sess.i18n(XlfKeys.sir) + " " + name;
+            f = dear + " " + Translate.FromKey(XlfKeys.sir) + " " + name;
 
         return char.ToUpper(f[0]) + f.Substring(1);
     }

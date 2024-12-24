@@ -18,7 +18,7 @@ public class sess
     /// </summary>
     /// <param name="k"></param>
     /// <returns></returns>
-    public static string i18n(string k)
+    public static string FromKey(string k)
     {
         switch (k)
         {
