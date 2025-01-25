@@ -10,23 +10,23 @@ public class XlfResourcesH
     private static Type type = typeof(XlfResourcesH);
     private static string previousKey;
 
-    public static string PathToXlfSunamo(Langs l)
+    public static string PathToXlfSunamo(Langs l, string basePathXlfFile)
     {
-        var p = @"E:\vs\Projects\PlatformIndependentNuGetPackages\sunamo\MultilingualResources\sunamo.";
+        //var basePathXlfFile = @"E:\vs\Projects\PlatformIndependentNuGetPackages\sunamo\MultilingualResources\sunamo.";
         switch (l)
         {
             case Langs.cs:
-                p += "cs-CZ";
+                basePathXlfFile += "cs-CZ";
                 break;
             case Langs.en:
-                p += "en-US";
+                basePathXlfFile += "en-US";
                 break;
             default:
                 ThrowEx.NotImplementedCase(l);
                 break;
         }
 
-        return p + ".xlf";
+        return basePathXlfFile + ".xlf";
     }
 
     public static string SaveResouresToRL(string VpsHelperSunamo_SunamoProject, LocalizationLanguages ll)
