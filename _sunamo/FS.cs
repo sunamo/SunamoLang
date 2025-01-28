@@ -3,26 +3,10 @@ namespace SunamoLang._sunamo;
 internal class FS
 {
     #region For easy shared
-    internal static string GetFullPath(string vr)
-    {
-        var result = Path.GetFullPath(vr);
-        return result;
-    }
 
-    internal static void FileToDirectory(ref string dir)
-    {
-        if (!dir.EndsWith("\""))
-        {
-            dir = Path.GetDirectoryName(dir);
-        }
-    }
 
     #endregion
 
-    internal static void CreateUpfoldersPsysicallyUnlessThere(string nad)
-    {
-        CreateFoldersPsysicallyUnlessThere(Path.GetDirectoryName(nad));
-    }
     internal static void CreateFoldersPsysicallyUnlessThere(string nad)
     {
         ThrowEx.IsNullOrEmpty("nad", nad);
