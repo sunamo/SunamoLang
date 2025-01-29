@@ -15,13 +15,8 @@ void
 #endif
 RemoveDoubleBomUtf8(string path)
 {}
-
     #endregion
 
     #region Only in *Xlf.cs
-    internal static void WriteAllBytes(string file, List<byte> b)
-    {
-        File.WriteAllBytes(file, b.ToArray());
-    }
     #endregion
 }

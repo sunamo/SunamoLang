@@ -34,11 +34,4 @@ internal class CA
         //CAChangeContent.ChangeContent2(null, files_in, Replace, what, forWhat);
     }
 
-    internal static void InitFillWith<T>(List<T> datas, int pocet, T initWith)
-    {
-        for (int i = 0; i < pocet; i++)
-        {
-            datas.Add(initWith);
-        }
-    }
 }
