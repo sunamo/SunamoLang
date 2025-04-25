@@ -4,7 +4,7 @@ internal class SHSplit
 {
 
 
-    internal static List<string> SplitCharMore(string parametry, params char[] deli)
+    internal static List<string> SplitChar(string parametry, params char[] deli)
     {
         return SplitMore(StringSplitOptions.RemoveEmptyEntries, parametry,
             deli.ToList().ConvertAll(d => d.ToString()).ToArray());
