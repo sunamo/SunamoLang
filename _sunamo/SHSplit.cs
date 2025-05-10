@@ -6,11 +6,11 @@ internal class SHSplit
 
     internal static List<string> SplitChar(string parametry, params char[] deli)
     {
-        return SplitMore(StringSplitOptions.RemoveEmptyEntries, parametry,
+        return Split(StringSplitOptions.RemoveEmptyEntries, parametry,
             deli.ToList().ConvertAll(d => d.ToString()).ToArray());
     }
 
-    internal static List<string> SplitMore(StringSplitOptions stringSplitOptions, string text, params string[] deli)
+    internal static List<string> Split(StringSplitOptions stringSplitOptions, string text, params string[] deli)
     {
         if (deli == null || deli.Count() == 0) throw new Exception("NoDelimiterDetermined");
         //var ie = CA.OneElementCollectionToMulti(deli);
