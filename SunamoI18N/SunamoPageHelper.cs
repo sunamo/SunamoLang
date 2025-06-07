@@ -6,7 +6,7 @@ namespace SunamoLang.SunamoI18N;
 /// </summary>
 public class SunamoPageHelper
 {
-    public static string LocalizedString_String(string l, string key, string ms)
+    public static string LocalizedString_String(string l, string key/*, string ms*/)
     {
         switch (l)
         {
