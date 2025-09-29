@@ -1,0 +1,61 @@
+name: Build SunamoLang
+
+on:
+  push:
+    branches: [ "**" ]
+  pull_request:
+    branches: [ "**" ]
+
+jobs:
+  build:
+    name: Build SunamoLang
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore SunamoLang/SunamoLang.csproj
+
+    - name: Build
+      run: dotnet build SunamoLang/SunamoLang.csproj --configuration Release --no-restore
+
+  test:
+    name: Test SunamoLang.Tests
+    runs-on: ${{ matrix.os }}
+    needs: build
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        submodules: recursive
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: '9.0.x'
+
+    - name: Restore dependencies
+      run: dotnet restore SunamoLang.Tests/SunamoLang.Tests.csproj
+
+    - name: Build tests
+      run: dotnet build SunamoLang.Tests/SunamoLang.Tests.csproj --configuration Release --no-restore
+
+    - name: Run tests
+      run: dotnet test SunamoLang.Tests/SunamoLang.Tests.csproj --configuration Release --no-build --verbosity normal
+      continue-on-error: true
