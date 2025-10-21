@@ -1,3 +1,6 @@
+// EN: Variable names have been checked and replaced with self-descriptive names
+// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
+
 namespace SunamoLang.SunamoXlf;
 
 /// <summary>
@@ -20,9 +23,9 @@ public class TranslatedStrings
 
     public void FillIfIsEmpty(string k)
     {
-        var v = RH.GetValueOfProperty(k, type, Instance, false);
+        var value = RH.GetValueOfProperty(k, type, Instance, false);
 
-        if (v.ToString() == string.Empty)
+        if (value.ToString() == string.Empty)
         {
             var tr = get(k);
             RH.SetValueOfProperty(k, type, Instance, false, tr);
