@@ -1,6 +1,7 @@
+namespace SunamoLang._sunamo;
+
 // EN: Variable names have been checked and replaced with self-descriptive names
 // CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
-namespace SunamoLang._sunamo;
 internal class XlfKeys
 {
     internal const string isNotInWindowsPathFormat = "isNotInWindowsPathFormat";

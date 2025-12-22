@@ -1,8 +1,4 @@
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 namespace SunamoLang;
-
-#region For easy copy
 
 public class CountryLang
 {
@@ -19,5 +15,3 @@ public class CountryLang
         d.Add(Langs.cs, "CZ");
     }
 }
-
-#endregion
