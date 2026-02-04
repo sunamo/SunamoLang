@@ -1,9 +1,7 @@
 namespace SunamoLang._sunamo;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
-/// FSXlf - postfixy jsou píčovina. volám v tom metody stejné třídy. Můžu nahradit FS. v SunExc ale musel bych to zkopírovat zpět. to nese riziko že jsem přidal novou metodu kterou bych překopírováním ztratil. Krom toho to nedrží konvenci. V názvu souboru to nechám ať vidím na první dobrou co je co.
+/// Reflection helper class for getting and setting property values.
 /// </summary>
 internal class RH
 {
@@ -14,83 +12,81 @@ internal class RH
         return GetValue(name, type, instance, pis, ignoreCase, null);
     }
 
-    internal static object SetValueOfProperty(string name, Type type, object instance, bool ignoreCase, object v)
+    internal static object SetValueOfProperty(string name, Type type, object instance, bool ignoreCase, object value)
     {
-        PropertyInfo[] pis = type.GetProperties();
-        return SetValue(name, type, instance, pis, ignoreCase, v);
+        PropertyInfo[] properties = type.GetProperties();
+        return SetValue(name, type, instance, properties, ignoreCase, value);
     }
 
-    private static object SetValue(object instance, MemberInfo[] property, object v)
+    private static object SetValue(object instance, MemberInfo[] property, object value)
     {
-        var val = property[0];
-        if (val is PropertyInfo)
+        var memberInfo = property[0];
+        if (memberInfo is PropertyInfo)
         {
-            var pi = (PropertyInfo)val;
-            pi.SetValue(instance, v);
+            var propertyInfo = (PropertyInfo)memberInfo;
+            propertyInfo.SetValue(instance, value);
         }
-        else if (val is FieldInfo)
+        else if (memberInfo is FieldInfo)
         {
-            var pi = (FieldInfo)val;
-            pi.SetValue(instance, v);
-        }
-        return null;
-    }
-
-    private static object GetValue(object instance, MemberInfo[] property, object v)
-    {
-        var val = property[0];
-        if (val is PropertyInfo)
-        {
-            var pi = (PropertyInfo)val;
-            return pi.GetValue(instance);
-        }
-        else if (val is FieldInfo)
-        {
-            var pi = (FieldInfo)val;
-            return pi.GetValue(instance);
+            var fieldInfo = (FieldInfo)memberInfo;
+            fieldInfo.SetValue(instance, value);
         }
         return null;
     }
 
-    internal static object GetValue(string name, Type type, object instance, IList pis, bool ignoreCase, object v)
+    private static object GetValue(object instance, MemberInfo[] property, object value)
     {
-        return GetOrSetValue(name, type, instance, pis, ignoreCase, GetValue, v);
+        var memberInfo = property[0];
+        if (memberInfo is PropertyInfo)
+        {
+            var propertyInfo = (PropertyInfo)memberInfo;
+            return propertyInfo.GetValue(instance);
+        }
+        else if (memberInfo is FieldInfo)
+        {
+            var fieldInfo = (FieldInfo)memberInfo;
+            return fieldInfo.GetValue(instance);
+        }
+        return null;
     }
 
-    internal static object SetValue(string name, Type type, object instance, IList pis, bool ignoreCase, object v)
+    internal static object GetValue(string name, Type type, object instance, IList properties, bool ignoreCase, object value)
     {
-        return GetOrSetValue(name, type, instance, pis, ignoreCase, SetValue, v);
+        return GetOrSetValue(name, type, instance, properties, ignoreCase, GetValue, value);
     }
 
-    internal static object GetOrSetValue(string name, Type type, object instance, IList pis, bool ignoreCase, Func<object, MemberInfo[], object, object> getOrSet, object v)
+    internal static object SetValue(string name, Type type, object instance, IList properties, bool ignoreCase, object value)
+    {
+        return GetOrSetValue(name, type, instance, properties, ignoreCase, SetValue, value);
+    }
+
+    internal static object GetOrSetValue(string name, Type type, object instance, IList properties, bool ignoreCase, Func<object, MemberInfo[], object, object> getOrSet, object value)
     {
         if (ignoreCase)
         {
             name = name.ToLower();
-            foreach (MemberInfo item in pis)
+            foreach (MemberInfo item in properties)
             {
                 if (item.Name.ToLower() == name)
                 {
                     var property = type.GetMember(name);
                     if (property != null)
                     {
-                        return getOrSet(instance, property, v);
-                        //return GetValue(instance, property);
+                        return getOrSet(instance, property, value);
                     }
                 }
             }
         }
         else
         {
-            foreach (MemberInfo item in pis)
+            foreach (MemberInfo item in properties)
             {
                 if (item.Name == name)
                 {
                     var property = type.GetMember(name);
                     if (property != null)
                     {
-                        return getOrSet(instance, property, v);
-                        //return GetValue(instance, property);
+                        return getOrSet(instance, property, value);
                     }
                 }
             }

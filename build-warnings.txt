@@ -1,0 +1,17 @@
+  Determining projects to restore...
+  All projects are up-to-date for restore.
+  SunamoLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang\bin\Release\net9.0\SunamoLang.dll
+  SunamoLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang\bin\Release\net10.0\SunamoLang.dll
+  SunamoLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang\bin\Release\net8.0\SunamoLang.dll
+  SunamoLang.Tests -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang.Tests\bin\Release\net8.0\SunamoLang.Tests.dll
+  SunamoLang.Tests -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang.Tests\bin\Release\net9.0\SunamoLang.Tests.dll
+  SunamoLang.Tests -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang.Tests\bin\Release\net10.0\SunamoLang.Tests.dll
+  RunnerLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\RunnerLang\bin\Release\net9.0\RunnerLang.dll
+  RunnerLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\RunnerLang\bin\Release\net8.0\RunnerLang.dll
+  RunnerLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\RunnerLang\bin\Release\net10.0\RunnerLang.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.63

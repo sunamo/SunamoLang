@@ -6,14 +6,23 @@ namespace SunamoLang.SunamoXlf;
 /// </summary>
 public class XlfResourcesH
 {
-    public static bool initialized = false;
-    private static Type type = typeof(XlfResourcesH);
-    private static string previousKey;
+    /// <summary>
+    /// Gets or sets whether the XLF resources have been initialized.
+    /// </summary>
+    public static bool Initialized { get; set; } = false;
 
-    public static string PathToXlfSunamo(Langs l, string basePathXlfFile)
+    private static string? previousKey;
+
+    /// <summary>
+    /// Constructs the full path to a Sunamo XLF file based on language and base path.
+    /// </summary>
+    /// <param name="lang">The language identifier.</param>
+    /// <param name="basePathXlfFile">The base path to the XLF file without language suffix.</param>
+    /// <returns>The full path to the XLF file including language suffix and extension.</returns>
+    public static string PathToXlfSunamo(Langs lang, string basePathXlfFile)
     {
         //var basePathXlfFile = @"E:\vs\Projects\PlatformIndependentNuGetPackages\sunamo\MultilingualResources\sunamo.";
-        switch (l)
+        switch (lang)
         {
             case Langs.cs:
                 basePathXlfFile += "cs-CZ";
@@ -22,16 +31,22 @@ public class XlfResourcesH
                 basePathXlfFile += "en-US";
                 break;
             default:
-                ThrowEx.NotImplementedCase(l);
+                ThrowEx.NotImplementedCase(lang);
                 break;
         }
 
         return basePathXlfFile + ".xlf";
     }
 
-    public static string SaveResouresToRL(string VpsHelperSunamo_SunamoProject, LocalizationLanguages ll)
+    /// <summary>
+    /// Saves localization resources to the resource loader.
+    /// </summary>
+    /// <param name="basePathToSunamoProject">The base path to the Sunamo project.</param>
+    /// <param name="localizationLanguages">The localization languages containing Czech and English content.</param>
+    /// <returns>The resource key that was processed.</returns>
+    public static string SaveResouresToRL(string basePathToSunamoProject, LocalizationLanguages localizationLanguages)
     {
-        return SaveResouresToRL<string, string>(null, VpsHelperSunamo_SunamoProject, ll);
+        return SaveResouresToRL<string, string>(null, basePathToSunamoProject, localizationLanguages);
     }
 
     #region Main worker
@@ -70,17 +85,16 @@ public class XlfResourcesH
     #region More sophisficated - If is not my computer, reading from resources
 
     /// <summary>
-    ///     A2 can be string.Empty
+    /// Saves localization resources to the resource loader with generic type parameters.
     /// </summary>
-    /// <typeparam name="StorageFolder"></typeparam>
-    /// <typeparam name="StorageFile"></typeparam>
-    /// <param name="key"></param>
-    /// <param name="basePath"></param>
-    /// <param name="existsDirectory"></param>
-    /// <param name="appData"></param>
-    /// <returns></returns>
+    /// <typeparam name="StorageFolder">The storage folder type (unused, for compatibility).</typeparam>
+    /// <typeparam name="StorageFile">The storage file type (unused, for compatibility).</typeparam>
+    /// <param name="key">The resource key to process.</param>
+    /// <param name="basePath">The base path to the project.</param>
+    /// <param name="localizationLanguages">The localization languages containing Czech and English content.</param>
+    /// <returns>The resource key that was processed, or null if already processed.</returns>
     public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath,
-        LocalizationLanguages ll)
+        LocalizationLanguages localizationLanguages)
     {
         if (previousKey == key && previousKey != null) return null;
         previousKey = key;
@@ -93,8 +107,8 @@ public class XlfResourcesH
         // #region 1) Loading direct from resources
         //var xlfContentCs =  rm.GetByteArray(Fn(Langs.cs));
         //var xlfContentEn = rm.GetByteArray(Fn(Langs.en));
-        ProcessXlfContent(Langs.cs, ll.Cs);
-        ProcessXlfContent(Langs.en, ll.En);
+        ProcessXlfContent(Langs.cs, localizationLanguages.Cs);
+        ProcessXlfContent(Langs.en, localizationLanguages.En);
         // #endregion
 
         #region 2) Loading from files - obsolete
@@ -146,6 +160,11 @@ public class XlfResourcesH
         return key;
     }
 
+    /// <summary>
+    /// Extracts all translation units from an XLF document into a dictionary.
+    /// </summary>
+    /// <param name="doc">The XLF document to process.</param>
+    /// <returns>A dictionary mapping translation IDs to their target values.</returns>
     public static Dictionary<string, string> GetTransUnits(XlfDocumentLang doc)
     {
         var result = new Dictionary<string, string>();
@@ -166,47 +185,47 @@ public class XlfResourcesH
         return result;
     }
 
-    private static void ProcessXlfContent(Langs lang2, string content)
+    private static void ProcessXlfContent(Langs language, string content)
     {
-        var isCzech = lang2 == Langs.cs;
-        var isEnglish = lang2 == Langs.en;
+        var isCzech = language == Langs.cs;
+        var isEnglish = language == Langs.en;
         var doc = new XlfDocumentLang();
         doc.LoadXml(content);
-        var lang = lang2.ToString().ToLower();
+        var lang = language.ToString().ToLower();
         var xlfFiles = doc.Files.Where(d => d.Original.ToLower().Contains(lang));
         if (xlfFiles.Count() != 0)
         {
             var xlfFile = xlfFiles.First();
-            foreach (var u in xlfFile.TransUnits)
+            foreach (var translationUnit in xlfFile.TransUnits)
                 if (isCzech)
                 {
-                    if (!RLData.cs.ContainsKey(u.Id)) RLData.cs.Add(u.Id, u.Target);
+                    if (!RLData.Cs.ContainsKey(translationUnit.Id)) RLData.Cs.Add(translationUnit.Id, translationUnit.Target);
                 }
                 else if (isEnglish)
                 {
-                    if (!RLData.en.ContainsKey(u.Id)) RLData.en.Add(u.Id, u.Target);
+                    if (!RLData.En.ContainsKey(translationUnit.Id)) RLData.En.Add(translationUnit.Id, translationUnit.Target);
                 }
             //throw new Exception("Invalid file " + file + ", please delete it");
         }
     }
 
-    private static string Fn(Langs cs)
+    private static string Fn(Langs language)
     {
-        string fn = null;
-        switch (cs)
+        string filename = null;
+        switch (language)
         {
             case Langs.cs:
-                fn = "sunamo_cs_CZ_min";
+                filename = "sunamo_cs_CZ_min";
                 break;
             case Langs.en:
-                fn = "sunamo_en_US_min";
+                filename = "sunamo_en_US_min";
                 break;
             default:
-                ThrowEx.NotImplementedCase(cs);
+                ThrowEx.NotImplementedCase(language);
                 break;
         }
 
-        return fn;
+        return filename;
     }
 
     #region Obsolete - loading from files

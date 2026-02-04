@@ -1,21 +1,27 @@
 namespace SunamoLang.SunamoI18N.Converts;
 
 /// <summary>
-///     AppLang/string
+/// Provides conversion between AppLang and string representations.
 /// </summary>
-public static class AppLangConverter //: ISimpleConverter<AppLang, string>
+public static class AppLangConverter
 {
     /// <summary>
-    ///     A1 - two chars number
+    /// Converts a two-character string to an AppLang instance.
     /// </summary>
-    /// <param name="b"></param>
-    public static AppLang ConvertTo(string b)
+    /// <param name="text">A two-character string where each character represents a byte value.</param>
+    /// <returns>An AppLang instance constructed from the string.</returns>
+    public static AppLang ConvertTo(string text)
     {
-        return new AppLang(byte.Parse(b[0].ToString()), byte.Parse(b[1].ToString()));
+        return new AppLang(byte.Parse(text[0].ToString()), byte.Parse(text[1].ToString()));
     }
 
-    public static string ConvertFrom(AppLang t)
+    /// <summary>
+    /// Converts an AppLang instance to its string representation.
+    /// </summary>
+    /// <param name="appLang">The AppLang instance to convert.</param>
+    /// <returns>A string representation of the AppLang.</returns>
+    public static string ConvertFrom(AppLang appLang)
     {
-        return t.Type + t.Language.ToString();
+        return appLang.Type + appLang.Language.ToString();
     }
 }

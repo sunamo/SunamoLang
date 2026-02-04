@@ -1,17 +1,21 @@
 namespace SunamoLang.SunamoXlf;
 
 /// <summary>
-///     FSXlf - postfixy jsou píčovina. volám v tom metody stejné třídy. Můžu nahradit FS. v SunExc ale musel bych to
-///     zkopírovat zpět. to nese riziko že jsem přidal novou metodu kterou bych překopírováním ztratil. Krom toho to nedrží
-///     konvenci. V názvu souboru to nechám ať vidím na první dobrou co je co.
+/// Collection array helper for XLF (XLIFF localization files) operations.
 /// </summary>
 public class CAXlf
 {
     #region Only in *Xlf.cs
 
-    public static List<T> ToList<T>(params T[] t)
+    /// <summary>
+    /// Converts an array of items to a List.
+    /// </summary>
+    /// <typeparam name="T">The type of items in the array.</typeparam>
+    /// <param name="items">The array of items to convert.</param>
+    /// <returns>A List containing the items from the array.</returns>
+    public static List<T> ToList<T>(params T[] items)
     {
-        return new List<T>(t);
+        return new List<T>(items);
     }
 
     #endregion

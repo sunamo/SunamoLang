@@ -1,24 +1,36 @@
 namespace SunamoLang._sunamo;
 
+/// <summary>
+/// String helper for splitting operations.
+/// </summary>
 internal class SHSplit
 {
-
-
-    internal static List<string> SplitChar(string parametry, params char[] deli)
+    /// <summary>
+    /// Splits a string by character delimiters.
+    /// </summary>
+    /// <param name="text">The text to split.</param>
+    /// <param name="delimiters">The character delimiters.</param>
+    /// <returns>A list of split strings.</returns>
+    internal static List<string> SplitChar(string text, params char[] delimiters)
     {
-        return Split(StringSplitOptions.RemoveEmptyEntries, parametry,
-            deli.ToList().ConvertAll(d => d.ToString()).ToArray());
+        return Split(StringSplitOptions.RemoveEmptyEntries, text,
+            delimiters.ToList().ConvertAll(delimiter => delimiter.ToString()).ToArray());
     }
 
-    internal static List<string> Split(StringSplitOptions stringSplitOptions, string text, params string[] deli)
+    /// <summary>
+    /// Splits a string by string delimiters with options.
+    /// </summary>
+    /// <param name="stringSplitOptions">The split options.</param>
+    /// <param name="text">The text to split.</param>
+    /// <param name="delimiters">The string delimiters.</param>
+    /// <returns>A list of split strings.</returns>
+    internal static List<string> Split(StringSplitOptions stringSplitOptions, string text, params string[] delimiters)
     {
-        if (deli == null || deli.Count() == 0) throw new Exception("NoDelimiterDetermined");
-        //var ie = CA.OneElementCollectionToMulti(deli);
-        //var deli3 = new List<string>IEnumerable2(ie);
-        var result = text.Split(deli, stringSplitOptions).ToList();
+        if (delimiters == null || delimiters.Count() == 0) throw new Exception("NoDelimiterDetermined");
+        var result = text.Split(delimiters, stringSplitOptions).ToList();
         CA.Trim(result);
         if (stringSplitOptions == StringSplitOptions.RemoveEmptyEntries)
-            result = result.Where(d => d.Trim() != string.Empty).ToList();
+            result = result.Where(delimiter => delimiter.Trim() != string.Empty).ToList();
 
         return result;
     }

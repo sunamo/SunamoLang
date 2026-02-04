@@ -1,14 +1,16 @@
 namespace SunamoLang._sunamo;
 
-// EN: Variable names have been checked and replaced with self-descriptive names
-// CZ: Názvy proměnných byly zkontrolovány a nahrazeny samopopisnými názvy
 /// <summary>
-///
+/// Text file helper class.
 /// </summary>
 internal class TF
 {
     #region For easy copy
-    internal static List<byte> bomUtf8 = new List<byte> { 239, 187, 191 };
+
+    /// <summary>
+    /// UTF-8 Byte Order Mark (BOM) bytes.
+    /// </summary>
+    internal static List<byte> BomUtf8 { get; } = new List<byte> { 239, 187, 191 };
 
     #endregion
 

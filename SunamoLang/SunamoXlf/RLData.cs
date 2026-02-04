@@ -1,13 +1,18 @@
 namespace SunamoLang.SunamoXlf;
 
 /// <summary>
-///     Is here dont mix RL and RLData with intellisense
+/// Resource localization data storage.
+/// Separates RL and RLData to avoid intellisense conflicts.
 /// </summary>
 public static class RLData
 {
-    private static Type type = typeof(RLData);
+    /// <summary>
+    /// English translation dictionary.
+    /// </summary>
+    public static TranslateDictionary En { get; } = new(Langs.en);
 
-    // In case of serious problem I can use TranslateDictionary
-    public static TranslateDictionary en = new(Langs.en);
-    public static TranslateDictionary cs = new(Langs.cs);
+    /// <summary>
+    /// Czech translation dictionary.
+    /// </summary>
+    public static TranslateDictionary Cs { get; } = new(Langs.cs);
 }

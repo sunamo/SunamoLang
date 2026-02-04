@@ -1,177 +1,193 @@
 namespace SunamoLang.SunamoI18N;
 
+/// <summary>
+/// Helper class for application language settings and culture management.
+/// </summary>
 public static class AppLangHelper
 {
     /// <summary>
-    ///     Číslo 0
+    /// Fixed language type constant (value: 0).
     /// </summary>
-    private const byte fixedC = 0;
+    private const byte FixedLanguageType = 0;
 
     /// <summary>
-    ///     Číslo 1
+    /// System language type constant (value: 1).
     /// </summary>
-    private const byte systemC = 1;
-
-    private const byte dependingOnLanguage = 0;
-
-    //const byte dependingOnCountry = 1;
-    /// <summary>
-    ///     Text Podle nastaveného jazyka OS
-    ///     Ačkoliv má v názvu 0, používá se když typ jazyku není 0
-    /// </summary>
-    private const string cs0 = "Podle nastaven\u00E9ho jazyka OS";
-
-    //const string cs1 = "Podle nastaveného regionu";
-    /// <summary>
-    ///     Text Depending on the OS language
-    ///     Ačkoliv má v názvu 0, používá se když typ jazyku není 0
-    /// </summary>
-    private const string en0 = "Depending on the OS language";
-
-    public static CultureInfo currentCulture = null;
-    public static CultureInfo currentUICulture = null;
+    private const byte SystemLanguageType = 1;
 
     /// <summary>
-    ///     Jazyky které si může zvolit sám uživatel
-    ///     V klíči je zkratka jazyku, v hodnotě pak její plný název
+    /// Language-dependent constant (value: 0).
     /// </summary>
-    private static readonly Dictionary<string, string> s_fixedLanguages = new();
+    private const byte DependingOnLanguage = 0;
 
     /// <summary>
-    ///     Texty, které jazyky
-    ///     V klíči je dvou znakový název jazyku, v hodnotě pak texty "Podle nastaveného jazyka OS" a "Depending on the OS
-    ///     language"
+    /// Czech text for "Depending on the OS language" setting.
     /// </summary>
-    private static readonly Dictionary<string, List<string>> s_systemLanguages = new();
+    private const string CzechOSLanguageText = "Podle nastaven\u00E9ho jazyka OS";
 
     /// <summary>
-    ///     V klíči je dvouznakový název jazyku, v hodnotě číslo tohoto jazyku, které je v třídě AppLang
+    /// English text for "Depending on the OS language" setting.
     /// </summary>
-    private static Dictionary<string, byte> s_languageCodes = new();
+    private const string EnglishOSLanguageText = "Depending on the OS language";
 
-    //const string en1 = "Depending on the country";
-    public static AppLang selectedInCB;
+    /// <summary>
+    /// Gets or sets the current culture information.
+    /// </summary>
+    public static CultureInfo CurrentCulture { get; set; } = null;
+
+    /// <summary>
+    /// Gets or sets the current UI culture information.
+    /// </summary>
+    public static CultureInfo CurrentUICulture { get; set; } = null;
+
+    /// <summary>
+    /// Languages that the user can select manually.
+    /// Key is the language abbreviation, value is its full name.
+    /// </summary>
+    private static readonly Dictionary<string, string> FixedLanguages = new();
+
+    /// <summary>
+    /// System language texts.
+    /// Key is the two-character language name, value contains texts like "Depending on the OS language".
+    /// </summary>
+    private static readonly Dictionary<string, List<string>> SystemLanguages = new();
+
+    /// <summary>
+    /// Language code mappings.
+    /// Key is the two-character language name, value is the numeric code used in AppLang class.
+    /// </summary>
+    private static Dictionary<string, byte> LanguageCodes = new();
+
+    /// <summary>
+    /// Gets or sets the currently selected language in the combo box.
+    /// </summary>
+    public static AppLang SelectedInComboBox { get; set; }
 
     static AppLangHelper()
     {
-        s_fixedLanguages.Add("cs", "\u010Ce\u0161tina");
-        s_fixedLanguages.Add("en", Translate.FromKey(XlfKeys.English));
+        FixedLanguages.Add("cs", "\u010Ce\u0161tina");
+        FixedLanguages.Add("en", Translate.FromKey(XlfKeys.English));
         var systemLanguageCS = new List<string>();
-        systemLanguageCS.Add(cs0);
+        systemLanguageCS.Add(CzechOSLanguageText);
         var systemLanguageEN = new List<string>();
-        systemLanguageEN.Add(en0);
-        s_systemLanguages.Add("cs", systemLanguageCS);
-        s_systemLanguages.Add("en", systemLanguageEN);
+        systemLanguageEN.Add(EnglishOSLanguageText);
+        SystemLanguages.Add("cs", systemLanguageCS);
+        SystemLanguages.Add("en", systemLanguageEN);
     }
 
     /// <summary>
-    ///     Vrátí název jazyku například do ComboBoxu na změnu jazyka
-    ///     Vrací pokud A1.TYpe není 0 správný text podle jazyka OS
+    /// Returns the language name for display (e.g., in a ComboBox for language selection).
+    /// If the language type is not fixed, returns the appropriate text based on OS language.
     /// </summary>
-    /// <param name="actual"></param>
-    /// <param name="displayed"></param>
+    /// <param name="actual">The current AppLang instance.</param>
+    /// <returns>The display name for the language.</returns>
     public static string ToString(AppLang actual)
     {
-        var vr = "";
-        //Langs l = Langs.cs;
-        if (actual.Type == fixedC)
+        var result = "";
+        if (actual.Type == FixedLanguageType)
         {
-            //l = (Langs)actual.Language;
-            vr = s_fixedLanguages[((Langs)actual.Language).ToString()];
+            result = FixedLanguages[((Langs)actual.Language).ToString()];
         }
         else
         {
-            CultureInfo depending = null;
-            if (actual.Language == dependingOnLanguage)
-                depending = currentUICulture;
+            CultureInfo dependingCulture = null;
+            if (actual.Language == DependingOnLanguage)
+                dependingCulture = CurrentUICulture;
             else
-                depending = currentCulture;
-            //depending = CultureInfo.CurrentCulture;
-            if (depending == null)
+                dependingCulture = CurrentCulture;
+
+            if (dependingCulture == null)
             {
-                if (actual.Language == dependingOnLanguage)
-                    depending = CultureInfo.CurrentUICulture;
+                if (actual.Language == DependingOnLanguage)
+                    dependingCulture = CultureInfo.CurrentUICulture;
                 else
-                    depending = CultureInfo.CurrentCulture;
+                    dependingCulture = CultureInfo.CurrentCulture;
             }
 
-            if (depending.TwoLetterISOLanguageName == "cs")
+            if (dependingCulture.TwoLetterISOLanguageName == "cs")
             {
                 if (actual.Language == 0)
-                    vr = cs0 + "-" +
-                         s_fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
+                    result = CzechOSLanguageText + "-" +
+                         FixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
             }
-            else //if (depending.TwoLetterISOLanguageName == "en")
+            else
             {
                 if (actual.Language == 0)
-                    vr = en0 + "-" +
-                         s_fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
+                    result = EnglishOSLanguageText + "-" +
+                         FixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
             }
         }
 
-        return vr;
+        return result;
     }
 
     /// <summary>
-    ///     Metoda která mi vrátí jazyk ve kterém se má obsah zobrazit
-    ///     GetLang2 return from two letters lang
-    ///     GetLang3 return from two or five (en-us) letters
+    /// Returns the language in which content should be displayed.
+    /// Supports both two-letter and five-letter (e.g., en-US) language codes.
     /// </summary>
-    /// <param name="b"></param>
-    public static Langs GetLang(string b)
+    /// <param name="text">The language code string.</param>
+    /// <returns>The corresponding Langs enum value.</returns>
+    public static Langs GetLang(string text)
     {
-        var vr = Langs.cs;
-        var actual = AppLangConverter.ConvertTo(b);
-        if (actual.Type == fixedC)
+        var result = Langs.cs;
+        var actual = AppLangConverter.ConvertTo(text);
+        if (actual.Type == FixedLanguageType)
         {
-            vr = (Langs)actual.Language;
+            result = (Langs)actual.Language;
         }
         else
         {
             if (actual.Language == 0)
-                vr = GetLang2(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
-            else if (actual.Language == 1) vr = GetLang2(CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
+                result = GetLang2(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
+            else if (actual.Language == 1) result = GetLang2(CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
         }
 
-        return vr;
+        return result;
     }
 
     /// <summary>
-    ///     Používá se když chci vrátit jazyk ve výčtu Langs - A1 musí být obsah výčtu Langs, tedy cs nebo en
-    ///     2 má v názvu proto že stejná metoda již existuje, ale ta mi vráti jazyk i podle OS
+    /// Returns the language enum value from a two-letter language code (e.g., "cs" or "en").
     /// </summary>
-    /// <param name="p"></param>
-    private static Langs GetLang2(string p)
+    /// <param name="languageCode">The two-letter language code.</param>
+    /// <returns>The corresponding Langs enum value.</returns>
+    private static Langs GetLang2(string languageCode)
     {
-        var vr = Langs.cs;
-        if (Enum.TryParse(p, out vr)) return vr;
+        var result = Langs.cs;
+        if (Enum.TryParse(languageCode, out result)) return result;
         return Langs.en;
     }
 
-    public static Langs GetLang3(string d)
+    /// <summary>
+    /// Returns the language enum value from either a two-letter or five-letter language code.
+    /// </summary>
+    /// <param name="languageCode">The language code (e.g., "en" or "en-US").</param>
+    /// <returns>The corresponding Langs enum value.</returns>
+    public static Langs GetLang3(string languageCode)
     {
-        if (d.Length == 5 && d[2] == '-') return GetLang2(d.Substring(0, 2));
-        return GetLang2(d);
+        if (languageCode.Length == 5 && languageCode[2] == '-') return GetLang2(languageCode.Substring(0, 2));
+        return GetLang2(languageCode);
     }
 
     /// <summary>
-    ///     Vrátí CultureInfo dané země bez specifikace jazyka pro jazyk A1
+    /// Returns the CultureInfo for the specified language.
     /// </summary>
-    /// <param name="p"></param>
-    public static CultureInfo GetCi(Langs p)
+    /// <param name="lang">The language enum value.</param>
+    /// <returns>The corresponding CultureInfo instance.</returns>
+    public static CultureInfo GetCi(Langs lang)
     {
-        CultureInfo ci = null;
-        if (p == Langs.cs)
-            ci = new CultureInfo("cs");
+        CultureInfo cultureInfo = null;
+        if (lang == Langs.cs)
+            cultureInfo = new CultureInfo("cs");
         else
-            ci = new CultureInfo("en");
-        return ci;
+            cultureInfo = new CultureInfo("en");
+        return cultureInfo;
     }
 
     /// <summary>
-    ///     Vrátí mi vyčet Langs, tedy jazyk na základě A1
+    /// Returns the Langs enum value based on the provided CultureInfo.
     /// </summary>
-    /// <param name="cultureInfo"></param>
+    /// <param name="cultureInfo">The CultureInfo to extract language from.</param>
+    /// <returns>The corresponding Langs enum value.</returns>
     public static Langs GetLang(CultureInfo cultureInfo)
     {
         if (cultureInfo.TwoLetterISOLanguageName == "cs")
@@ -179,48 +195,53 @@ public static class AppLangHelper
         return Langs.en;
     }
 
-    public static List<AppLang> ItemsToAddToComboBox(string settingsAl)
+    /// <summary>
+    /// Returns a list of AppLang items to populate a language selection ComboBox.
+    /// </summary>
+    /// <param name="settingsAppLang">The current language settings string.</param>
+    /// <returns>A list of AppLang items for the ComboBox.</returns>
+    public static List<AppLang> ItemsToAddToComboBox(string settingsAppLang)
     {
-        var vr = new List<AppLang>();
-        selectedInCB = null;
-        byte i = 0;
-        foreach (var item in s_fixedLanguages)
+        var result = new List<AppLang>();
+        SelectedInComboBox = null;
+        byte index = 0;
+        foreach (var item in FixedLanguages)
         {
-            var al = new AppLang(fixedC, i);
-            if (selectedInCB == null)
-                if (AppLangConverter.ConvertFrom(al) == settingsAl)
-                    selectedInCB = al;
-            vr.Add(al);
-            i++;
+            var appLang = new AppLang(FixedLanguageType, index);
+            if (SelectedInComboBox == null)
+                if (AppLangConverter.ConvertFrom(appLang) == settingsAppLang)
+                    SelectedInComboBox = appLang;
+            result.Add(appLang);
+            index++;
         }
 
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
-            i = 0;
-            foreach (var item in s_systemLanguages["cs"])
+            index = 0;
+            foreach (var item in SystemLanguages["cs"])
             {
-                var al = new AppLang(systemC, i);
-                if (selectedInCB == null)
-                    if (AppLangConverter.ConvertFrom(al) == settingsAl)
-                        selectedInCB = al;
-                vr.Add(al);
-                i++;
+                var appLang = new AppLang(SystemLanguageType, index);
+                if (SelectedInComboBox == null)
+                    if (AppLangConverter.ConvertFrom(appLang) == settingsAppLang)
+                        SelectedInComboBox = appLang;
+                result.Add(appLang);
+                index++;
             }
         }
         else
         {
-            i = 0;
-            foreach (var item in s_systemLanguages["en"])
+            index = 0;
+            foreach (var item in SystemLanguages["en"])
             {
-                var al = new AppLang(systemC, i);
-                if (selectedInCB == null)
-                    if (AppLangConverter.ConvertFrom(al) == settingsAl)
-                        selectedInCB = al;
-                vr.Add(al);
-                i++;
+                var appLang = new AppLang(SystemLanguageType, index);
+                if (SelectedInComboBox == null)
+                    if (AppLangConverter.ConvertFrom(appLang) == settingsAppLang)
+                        SelectedInComboBox = appLang;
+                result.Add(appLang);
+                index++;
             }
         }
 
-        return vr;
+        return result;
     }
 }

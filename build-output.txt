@@ -1,0 +1,15 @@
+  SunamoLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang\bin\Debug\net10.0\SunamoLang.dll
+  SunamoLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang\bin\Debug\net9.0\SunamoLang.dll
+  SunamoLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang\bin\Debug\net8.0\SunamoLang.dll
+  SunamoLang.Tests -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang.Tests\bin\Debug\net8.0\SunamoLang.Tests.dll
+  SunamoLang.Tests -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang.Tests\bin\Debug\net9.0\SunamoLang.Tests.dll
+  SunamoLang.Tests -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang.Tests\bin\Debug\net10.0\SunamoLang.Tests.dll
+  RunnerLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\RunnerLang\bin\Debug\net8.0\RunnerLang.dll
+  RunnerLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\RunnerLang\bin\Debug\net10.0\RunnerLang.dll
+  RunnerLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\RunnerLang\bin\Debug\net9.0\RunnerLang.dll
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:01.55

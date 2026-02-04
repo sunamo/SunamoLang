@@ -1,32 +1,47 @@
 namespace SunamoLang.SunamoXlf;
 
 /// <summary>
-///     For using in content template etc
+/// Singleton for translated strings used in content templates and similar scenarios.
 /// </summary>
 public class TranslatedStrings
 {
-    public static TranslatedStrings Instance = new();
-    private static readonly Type type = typeof(TranslatedStrings);
+    /// <summary>
+    /// Gets the singleton instance of TranslatedStrings.
+    /// </summary>
+    public static TranslatedStrings Instance { get; } = new();
 
-    public Func<string, string> get = null;
+    /// <summary>
+    /// Gets or sets the function to retrieve a translated string by property name.
+    /// </summary>
+    public Func<string, string>? Get { get; set; } = null;
 
     private TranslatedStrings()
     {
     }
 
+    /// <summary>
+    /// Gets or sets the translated "Set as Default" string.
+    /// </summary>
     public string SetAsDefault { get; set; } = string.Empty;
 
+    /// <summary>
+    /// Gets or sets the translated "Delete" string.
+    /// </summary>
     public string Delete { get; set; } = string.Empty;
 
-    public void FillIfIsEmpty(string k)
+    /// <summary>
+    /// Fills the property if it is empty.
+    /// </summary>
+    /// <param name="propertyName">The property name to fill.</param>
+    public void FillIfIsEmpty(string propertyName)
     {
-        var value = RH.GetValueOfProperty(k, type, Instance, false);
+        var propertyType = typeof(TranslatedStrings);
+        var value = RH.GetValueOfProperty(propertyName, propertyType, Instance, false);
 
         if (value.ToString() == string.Empty)
         {
-            var tr = get(k);
-            RH.SetValueOfProperty(k, type, Instance, false, tr);
-            //v = RH.GetValueOfProperty(k, type, Instance, false);
+            var translation = Get(propertyName);
+            RH.SetValueOfProperty(propertyName, propertyType, Instance, false, translation);
         }
     }
 }

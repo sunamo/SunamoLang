@@ -1,24 +1,28 @@
 namespace SunamoLang.SunamoXlf;
 
+/// <summary>
+/// Helper class for XML Localization Interchange File Format (XLIFF) operations.
+/// </summary>
 public class XmlLocalisationInterchangeFileFormatXlf
 {
     #region Only in *Xlf.cs
 
     /// <summary>
-    ///     A1 can be full path
+    /// Extracts the language from an XLF filename.
     /// </summary>
-    /// <param name="s"></param>
-    public static Langs GetLangFromFilename(string s)
+    /// <param name="filename">The filename or full path to the XLF file.</param>
+    /// <returns>The language identifier extracted from the filename.</returns>
+    public static Langs GetLangFromFilename(string filename)
     {
-        s = Path.GetFileNameWithoutExtension(s);
+        filename = Path.GetFileNameWithoutExtension(filename);
         List<string> parts = null;
-        if (s.Contains("_"))
-            parts = SHSplit.SplitChar(s, '_');
+        if (filename.Contains("_"))
+            parts = SHSplit.SplitChar(filename, '_');
         else
-            parts = SHSplit.SplitChar(s, '.', '-');
-        var sub = 2;
-        if (s.Contains("min")) sub++;
-        var beforeLast = parts[parts.Count - sub].ToLower();
+            parts = SHSplit.SplitChar(filename, '.', '-');
+        var subtractCount = 2;
+        if (filename.Contains("min")) subtractCount++;
+        var beforeLast = parts[parts.Count - subtractCount].ToLower();
         if (beforeLast.StartsWith("cs")) return Langs.cs;
         return Langs.en;
     }

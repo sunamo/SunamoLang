@@ -13,16 +13,16 @@ internal sealed partial class Exceptions
     internal static Tuple<string, string, string> PlaceOfException(
 bool fillAlsoFirstTwo = true)
     {
-        StackTrace st = new();
-        var value = st.ToString();
-        var lines = value.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        StackTrace stackTrace = new();
+        var stackTraceText = stackTrace.ToString();
+        var lines = stackTraceText.Split(new string[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries).ToList();
         lines.RemoveAt(0);
-        var i = 0;
+        var index = 0;
         string type = string.Empty;
         string methodName = string.Empty;
-        for (; i < lines.Count; i++)
+        for (; index < lines.Count; index++)
         {
-            var item = lines[i];
+            var item = lines[index];
             if (fillAlsoFirstTwo)
                 if (!item.StartsWith("   at ThrowEx"))
                 {
@@ -38,19 +38,19 @@ bool fillAlsoFirstTwo = true)
         }
         return new Tuple<string, string, string>(type, methodName, string.Join(Environment.NewLine, lines));
     }
-    internal static void TypeAndMethodName(string lines, out string type, out string methodName)
+    internal static void TypeAndMethodName(string stackTraceLine, out string type, out string methodName)
     {
-        var s2 = lines.Split("at ")[1].Trim();
-        var text = s2.Split("(")[0];
-        var parameter = text.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
-        methodName = parameter[^1];
-        parameter.RemoveAt(parameter.Count - 1);
-        type = string.Join(".", parameter);
+        var methodCall = stackTraceLine.Split("at ")[1].Trim();
+        var fullMethodPath = methodCall.Split("(")[0];
+        var nameParts = fullMethodPath.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
+        methodName = nameParts[^1];
+        nameParts.RemoveAt(nameParts.Count - 1);
+        type = string.Join(".", nameParts);
     }
-    internal static string CallingMethod(int value = 1)
+    internal static string CallingMethod(int frameDepth = 1)
     {
         StackTrace stackTrace = new();
-        var methodBase = stackTrace.GetFrame(value)?.GetMethod();
+        var methodBase = stackTrace.GetFrame(frameDepth)?.GetMethod();
         if (methodBase == null)
         {
             return "Method name cannot be get";
@@ -58,11 +58,6 @@ bool fillAlsoFirstTwo = true)
         var methodName = methodBase.Name;
         return methodName;
     }
-    #endregion
-
-    #region IsNullOrWhitespace
-    readonly static StringBuilder sbAdditionalInfoInner = new();
-    readonly static StringBuilder sbAdditionalInfo = new();
     #endregion
 
     #region OnlyReturnString 
@@ -77,25 +72,25 @@ bool fillAlsoFirstTwo = true)
     #endregion
     internal static string? NotImplementedCase(string before, object notImplementedName)
     {
-        var fr = string.Empty;
+        var forSuffix = string.Empty;
         if (notImplementedName != null)
         {
-            fr = " for ";
+            forSuffix = " for ";
             if (notImplementedName.GetType() == typeof(Type))
-                fr += ((Type)notImplementedName).FullName;
+                forSuffix += ((Type)notImplementedName).FullName;
             else
-                fr += notImplementedName.ToString();
+                forSuffix += notImplementedName.ToString();
         }
-        return CheckBefore(before) + "Not implemented case" + fr + " . internal program error. Please contact developer" +
+        return CheckBefore(before) + "Not implemented case" + forSuffix + " . internal program error. Please contact developer" +
         ".";
     }
 
-    internal static string? DifferentCountInLists(string before, string namefc, int countfc, string namesc, int countsc)
+    internal static string? DifferentCountInLists(string before, string firstCollectionName, int firstCollectionCount, string secondCollectionName, int secondCollectionCount)
     {
-        if (countfc != countsc)
+        if (firstCollectionCount != secondCollectionCount)
             return CheckBefore(before) + " different count elements in collection" + " " +
-            string.Concat(namefc + "-" + countfc) + " vs. " +
-            string.Concat(namesc + "-" + countsc);
+            string.Concat(firstCollectionName + "-" + firstCollectionCount) + " vs. " +
+            string.Concat(secondCollectionName + "-" + secondCollectionCount);
         return null;
     }
 }

@@ -1,43 +1,53 @@
 namespace SunamoLang.SunamoXlf;
 
 /// <summary>
-///     Load from files *.resources and *.resx. Nothing else
-///     usage: ThisApp.Resources = ResourcesHelper.Create("sunamo.Properties.Resources", typeof(ResourcesHelper).Assembly)
-///     When change joined file, change of content will be update also in *.resx
+/// Helper class for loading from *.resources and *.resx files.
+/// Usage: ThisApp.Resources = ResourcesHelper.Create("sunamo.Properties.Resources", typeof(ResourcesHelper).Assembly)
+/// When the joined file changes, the content update is also reflected in the *.resx file.
 /// </summary>
 public class ResourcesHelper
 {
     #region For easy copy
 
-    private ResourceManager _rm;
+    private ResourceManager? _resourceManager;
 
     private ResourcesHelper()
     {
     }
 
     /// <summary>
-    ///     A1 - file without extension and lang specifier but with Name
-    ///     MyApp.MyResource.en-US.resx is MyApp.MyResource
+    /// Creates a ResourcesHelper instance for the specified resource class.
     /// </summary>
-    /// <param name="executingAssembly"></param>
-    public static ResourcesHelper Create(string resourceClass, Assembly sunamoAssembly)
+    /// <param name="resourceClass">The resource class name without extension and language specifier (e.g., MyApp.MyResource for MyApp.MyResource.en-US.resx).</param>
+    /// <param name="assembly">The assembly containing the resources.</param>
+    /// <returns>A new ResourcesHelper instance.</returns>
+    public static ResourcesHelper Create(string resourceClass, Assembly assembly)
     {
         var resourcesHelper = new ResourcesHelper();
-        resourcesHelper._rm = new ResourceManager(resourceClass, sunamoAssembly);
+        resourcesHelper._resourceManager = new ResourceManager(resourceClass, assembly);
         return resourcesHelper;
     }
 
+    /// <summary>
+    /// Gets a string resource by name.
+    /// </summary>
+    /// <param name="name">The resource name.</param>
+    /// <returns>The string value of the resource.</returns>
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
-    public string GetString(string name)
+    public string? GetString(string name)
     {
-        return _rm.GetString(name);
+        return _resourceManager?.GetString(name);
     }
 
+    /// <summary>
+    /// Gets a byte array resource as a UTF-8 string.
+    /// </summary>
+    /// <param name="name">The resource name.</param>
+    /// <returns>The byte array resource converted to a UTF-8 string.</returns>
     public string GetByteArrayAsString(string name)
     {
-        var ba = _rm.GetObject(name);
-        //var ab = FS.StreamToArrayBytes((Stream)ba);
-        return Encoding.UTF8.GetString((byte[])ba);
+        var byteArray = _resourceManager?.GetObject(name) as byte[];
+        return byteArray != null ? Encoding.UTF8.GetString(byteArray) : string.Empty;
     }
 
     #endregion

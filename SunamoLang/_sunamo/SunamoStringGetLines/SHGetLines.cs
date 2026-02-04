@@ -2,45 +2,45 @@ namespace SunamoLang._sunamo.SunamoStringGetLines;
 
 internal class SHGetLines
 {
-    internal static List<string> GetLines(string p)
+    internal static List<string> GetLines(string text)
     {
-        var parts = p.Split(new[] { "\r\n", "\n\r" }, StringSplitOptions.None).ToList();
+        var parts = text.Split(new[] { "\r\n", "\n\r" }, StringSplitOptions.None).ToList();
         SplitByUnixNewline(parts);
         return parts;
     }
 
-    private static void SplitByUnixNewline(List<string> d)
+    private static void SplitByUnixNewline(List<string> lines)
     {
-        SplitBy(d, "\r");
-        SplitBy(d, "\n");
+        SplitBy(lines, "\r");
+        SplitBy(lines, "\n");
     }
 
-    private static void SplitBy(List<string> d, string v)
+    private static void SplitBy(List<string> lines, string separator)
     {
-        for (var i = d.Count - 1; i >= 0; i--)
+        for (var index = lines.Count - 1; index >= 0; index--)
         {
-            if (v == "\r")
+            if (separator == "\r")
             {
-                var rn = d[i].Split(new[] { "\r\n" }, StringSplitOptions.None);
-                var nr = d[i].Split(new[] { "\n\r" }, StringSplitOptions.None);
+                var windowsNewlines = lines[index].Split(new[] { "\r\n" }, StringSplitOptions.None);
+                var reverseNewlines = lines[index].Split(new[] { "\n\r" }, StringSplitOptions.None);
 
-                if (rn.Length > 1)
+                if (windowsNewlines.Length > 1)
                     ThrowEx.Custom("cannot contain any \r\name, pass already split by this pattern");
-                else if (nr.Length > 1) ThrowEx.Custom("cannot contain any \n\r, pass already split by this pattern");
+                else if (reverseNewlines.Length > 1) ThrowEx.Custom("cannot contain any \n\r, pass already split by this pattern");
             }
 
-            var name = d[i].Split(new[] { v }, StringSplitOptions.None);
+            var parts = lines[index].Split(new[] { separator }, StringSplitOptions.None);
 
-            if (name.Length > 1) InsertOnIndex(d, name.ToList(), i);
+            if (parts.Length > 1) InsertOnIndex(lines, parts.ToList(), index);
         }
     }
 
-    private static void InsertOnIndex(List<string> d, List<string> r, int i)
+    private static void InsertOnIndex(List<string> lines, List<string> parts, int index)
     {
-        r.Reverse();
+        parts.Reverse();
 
-        d.RemoveAt(i);
+        lines.RemoveAt(index);
 
-        foreach (var item in r) d.Insert(i, item);
+        foreach (var item in parts) lines.Insert(index, item);
     }
 }

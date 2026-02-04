@@ -1,26 +1,28 @@
 namespace SunamoLang.SunamoI18N;
 
 /// <summary>
-///     Tato třída je zde kvůli interoperibilitě s .web apss
-///     má 3. parametr string ale ten se nevyužívá
+/// Helper class for web application interoperability.
+/// Provides localized string retrieval functionality.
 /// </summary>
 public class SunamoPageHelper
 {
-    public static string LocalizedString_String(string l, string key/*, string ms*/)
+    /// <summary>
+    /// Gets a localized string for the specified language and key.
+    /// </summary>
+    /// <param name="lang">The language code (e.g., "cs", "en").</param>
+    /// <param name="key">The localization key.</param>
+    /// <returns>The localized string value.</returns>
+    public static string LocalizedString_String(string lang, string key)
     {
-        switch (l)
+        switch (lang)
         {
             case "cs":
-                return RLData.cs[key];
-                break;
+                return RLData.Cs[key];
             case "en":
-                return RLData.en[key];
-                break;
+                return RLData.En[key];
             default:
-                ThrowEx.NotImplementedCase(l);
-                break;
+                ThrowEx.NotImplementedCase(lang);
+                return null;
         }
-
-        return null;
     }
 }
