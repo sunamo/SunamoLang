@@ -31,7 +31,7 @@ public class LocaleHelperLang : ILocaleHelper
     /// </summary>
     /// <param name="country">The country code (e.g., "CZ", "GB").</param>
     /// <returns>The language code (e.g., "cs", "en"), or null if not found.</returns>
-    public string GetLangForCountry2(string country)
+    public string? GetLangForCountry2(string country)
     {
         foreach (var item in CountryLang.LanguageToCountryMap)
             if (item.Value == country)
@@ -44,7 +44,7 @@ public class LocaleHelperLang : ILocaleHelper
     /// </summary>
     /// <param name="country">The country code (e.g., "cz", "gb").</param>
     /// <returns>The language code (e.g., "cs", "en"), or null if not found.</returns>
-    public static string GetLangForCountry(string country)
+    public static string? GetLangForCountry(string country)
     {
         country = country.ToLower();
         foreach (var item in CultureInfo.GetCultures(CultureTypes.AllCultures))

@@ -33,12 +33,12 @@ public static class AppLangHelper
     /// <summary>
     /// Gets or sets the current culture information.
     /// </summary>
-    public static CultureInfo CurrentCulture { get; set; } = null;
+    public static CultureInfo? CurrentCulture { get; set; } = null;
 
     /// <summary>
     /// Gets or sets the current UI culture information.
     /// </summary>
-    public static CultureInfo CurrentUICulture { get; set; } = null;
+    public static CultureInfo? CurrentUICulture { get; set; } = null;
 
     /// <summary>
     /// Languages that the user can select manually.
@@ -61,7 +61,7 @@ public static class AppLangHelper
     /// <summary>
     /// Gets or sets the currently selected language in the combo box.
     /// </summary>
-    public static AppLang SelectedInComboBox { get; set; }
+    public static AppLang? SelectedInComboBox { get; set; }
 
     static AppLangHelper()
     {
@@ -90,7 +90,7 @@ public static class AppLangHelper
         }
         else
         {
-            CultureInfo dependingCulture = null;
+            CultureInfo? dependingCulture = null;
             if (actual.Language == DependingOnLanguage)
                 dependingCulture = CurrentUICulture;
             else
@@ -175,7 +175,7 @@ public static class AppLangHelper
     /// <returns>The corresponding CultureInfo instance.</returns>
     public static CultureInfo GetCi(Langs lang)
     {
-        CultureInfo cultureInfo = null;
+        CultureInfo? cultureInfo = null;
         if (lang == Langs.cs)
             cultureInfo = new CultureInfo("cs");
         else

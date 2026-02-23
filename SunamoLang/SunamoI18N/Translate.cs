@@ -22,7 +22,7 @@ public class Translate
                 return "Different count elements in collection";
             default:
                 ThrowEx.NotImplementedCase(key);
-                return null;
+                return null!;
         }
     }
 }

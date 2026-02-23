@@ -59,7 +59,7 @@ public class TranslateDictionary : IDictionary<string, string>
             if (!_dictionary.ContainsKey(key))
             {
                 if (ReloadIfKeyWontBeFound == null) return ThrowNotFoundError(key, "ReloadIfKeyWontBeFound is null.");
-                var reloadedKey = ReloadIfKeyWontBeFound(key, LocalizationLanguages);
+                var reloadedKey = ReloadIfKeyWontBeFound(key, LocalizationLanguages!);
                 if (!_dictionary.ContainsKey(key))
                     return ThrowNotFoundError(key, string.Empty);
             }
@@ -184,7 +184,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <returns>True if the dictionary contains an entry with the specified key; otherwise, false.</returns>
     public bool TryGetValue(string key, out string value)
     {
-        return _dictionary.TryGetValue(key, out value);
+        return _dictionary.TryGetValue(key, out value!);
     }
 
     IEnumerator IEnumerable.GetEnumerator()

@@ -17,5 +17,5 @@ public interface ILocaleHelper
     /// </summary>
     /// <param name="country">The country code.</param>
     /// <returns>The language code corresponding to the country.</returns>
-    string GetLangForCountry2(string country);
+    string? GetLangForCountry2(string country);
 }

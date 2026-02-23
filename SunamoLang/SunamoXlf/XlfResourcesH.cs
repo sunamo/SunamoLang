@@ -44,7 +44,7 @@ public class XlfResourcesH
     /// <param name="basePathToSunamoProject">The base path to the Sunamo project.</param>
     /// <param name="localizationLanguages">The localization languages containing Czech and English content.</param>
     /// <returns>The resource key that was processed.</returns>
-    public static string SaveResouresToRL(string basePathToSunamoProject, LocalizationLanguages localizationLanguages)
+    public static string? SaveResouresToRL(string basePathToSunamoProject, LocalizationLanguages localizationLanguages)
     {
         return SaveResouresToRL<string, string>(null, basePathToSunamoProject, localizationLanguages);
     }
@@ -93,7 +93,7 @@ public class XlfResourcesH
     /// <param name="basePath">The base path to the project.</param>
     /// <param name="localizationLanguages">The localization languages containing Czech and English content.</param>
     /// <returns>The resource key that was processed, or null if already processed.</returns>
-    public static string SaveResouresToRL<StorageFolder, StorageFile>(string key, string basePath,
+    public static string? SaveResouresToRL<StorageFolder, StorageFile>(string? key, string basePath,
         LocalizationLanguages localizationLanguages)
     {
         if (previousKey == key && previousKey != null) return null;
@@ -211,7 +211,7 @@ public class XlfResourcesH
 
     private static string Fn(Langs language)
     {
-        string filename = null;
+        string? filename = null;
         switch (language)
         {
             case Langs.cs:
@@ -225,7 +225,7 @@ public class XlfResourcesH
                 break;
         }
 
-        return filename;
+        return filename!;
     }
 
     #region Obsolete - loading from files

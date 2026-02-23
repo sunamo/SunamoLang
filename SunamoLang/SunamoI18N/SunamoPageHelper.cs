@@ -22,7 +22,7 @@ public class SunamoPageHelper
                 return RLData.En[key];
             default:
                 ThrowEx.NotImplementedCase(lang);
-                return null;
+                return null!;
         }
     }
 }

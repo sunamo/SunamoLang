@@ -123,8 +123,8 @@ C5 BE";
             foreach (var item in fromUtf8hex) input = input.Replace(item.Key, item.Value);
         }
 
-        input = SHParts.KeepAfterFirst(input, "<!DOCTYPE html>", true);
-        input = SHParts.RemoveAfterFirst(input, "</html");
+        input = SHParts.KeepAfterFirst!(input, "<!DOCTYPE html>", true);
+        input = SHParts.RemoveAfterFirst!(input, "</html");
 
         input = input.Replace("3D\"", "=\"");
 

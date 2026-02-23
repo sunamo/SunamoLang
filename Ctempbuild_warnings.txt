@@ -1,0 +1,21 @@
+Build started 2/10/2026 10:11:57 PM.
+     1>Project "E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang\SunamoLang.csproj" on node 1 (default targets).
+     1>GenerateTargetFrameworkMonikerAttribute:
+       Skipping target "GenerateTargetFrameworkMonikerAttribute" because all output files are up-to-date with respect to the input files.
+       CoreGenerateAssemblyInfo:
+       Skipping target "CoreGenerateAssemblyInfo" because all output files are up-to-date with respect to the input files.
+       _GenerateSourceLinkFile:
+         Source Link file 'obj\Debug\net10.0\SunamoLang.sourcelink.json' is up-to-date.
+       CoreCompile:
+       Skipping target "CoreCompile" because all output files are up-to-date with respect to the input files.
+       GenerateBuildDependencyFile:
+       Skipping target "GenerateBuildDependencyFile" because all output files are up-to-date with respect to the input files.
+       CopyFilesToOutputDirectory:
+         SunamoLang -> E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang\bin\Debug\net10.0\SunamoLang.dll
+     1>Done Building Project "E:\vs\Projects\PlatformIndependentNuGetPackages\SunamoLang\SunamoLang\SunamoLang.csproj" (default targets).
+
+Build succeeded.
+    0 Warning(s)
+    0 Error(s)
+
+Time Elapsed 00:00:00.45

@@ -6,19 +6,19 @@ namespace SunamoLang._sunamo;
 internal class RH
 {
     #region For easy copy
-    internal static object GetValueOfProperty(string name, Type type, object instance, bool ignoreCase)
+    internal static object? GetValueOfProperty(string name, Type type, object instance, bool ignoreCase)
     {
         PropertyInfo[] pis = type.GetProperties();
         return GetValue(name, type, instance, pis, ignoreCase, null);
     }
 
-    internal static object SetValueOfProperty(string name, Type type, object instance, bool ignoreCase, object value)
+    internal static object? SetValueOfProperty(string name, Type type, object instance, bool ignoreCase, object value)
     {
         PropertyInfo[] properties = type.GetProperties();
         return SetValue(name, type, instance, properties, ignoreCase, value);
     }
 
-    private static object SetValue(object instance, MemberInfo[] property, object value)
+    private static object? SetValue(object instance, MemberInfo[] property, object? value)
     {
         var memberInfo = property[0];
         if (memberInfo is PropertyInfo)
@@ -34,7 +34,7 @@ internal class RH
         return null;
     }
 
-    private static object GetValue(object instance, MemberInfo[] property, object value)
+    private static object? GetValue(object instance, MemberInfo[] property, object? value)
     {
         var memberInfo = property[0];
         if (memberInfo is PropertyInfo)
@@ -50,17 +50,17 @@ internal class RH
         return null;
     }
 
-    internal static object GetValue(string name, Type type, object instance, IList properties, bool ignoreCase, object value)
+    internal static object? GetValue(string name, Type type, object instance, IList properties, bool ignoreCase, object? value)
     {
         return GetOrSetValue(name, type, instance, properties, ignoreCase, GetValue, value);
     }
 
-    internal static object SetValue(string name, Type type, object instance, IList properties, bool ignoreCase, object value)
+    internal static object? SetValue(string name, Type type, object instance, IList properties, bool ignoreCase, object value)
     {
         return GetOrSetValue(name, type, instance, properties, ignoreCase, SetValue, value);
     }
 
-    internal static object GetOrSetValue(string name, Type type, object instance, IList properties, bool ignoreCase, Func<object, MemberInfo[], object, object> getOrSet, object value)
+    internal static object? GetOrSetValue(string name, Type type, object instance, IList properties, bool ignoreCase, Func<object, MemberInfo[], object?, object?> getOrSet, object? value)
     {
         if (ignoreCase)
         {

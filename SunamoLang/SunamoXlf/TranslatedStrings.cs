@@ -38,9 +38,9 @@ public class TranslatedStrings
         var propertyType = typeof(TranslatedStrings);
         var value = RH.GetValueOfProperty(propertyName, propertyType, Instance, false);
 
-        if (value.ToString() == string.Empty)
+        if (value?.ToString() == string.Empty)
         {
-            var translation = Get(propertyName);
+            var translation = Get!(propertyName);
             RH.SetValueOfProperty(propertyName, propertyType, Instance, false, translation);
         }
     }

@@ -15,7 +15,7 @@ public class XmlLocalisationInterchangeFileFormatXlf
     public static Langs GetLangFromFilename(string filename)
     {
         filename = Path.GetFileNameWithoutExtension(filename);
-        List<string> parts = null;
+        List<string>? parts = null;
         if (filename.Contains("_"))
             parts = SHSplit.SplitChar(filename, '_');
         else
