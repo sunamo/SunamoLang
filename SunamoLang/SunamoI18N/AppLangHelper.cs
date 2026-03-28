@@ -8,27 +8,27 @@ public static class AppLangHelper
     /// <summary>
     /// Fixed language type constant (value: 0).
     /// </summary>
-    private const byte FixedLanguageType = 0;
+    private const byte fixedLanguageType = 0;
 
     /// <summary>
     /// System language type constant (value: 1).
     /// </summary>
-    private const byte SystemLanguageType = 1;
+    private const byte systemLanguageType = 1;
 
     /// <summary>
     /// Language-dependent constant (value: 0).
     /// </summary>
-    private const byte DependingOnLanguage = 0;
+    private const byte dependingOnLanguage = 0;
 
     /// <summary>
     /// Czech text for "Depending on the OS language" setting.
     /// </summary>
-    private const string CzechOSLanguageText = "Podle nastaven\u00E9ho jazyka OS";
+    private const string czechOSLanguageText = "Podle nastaven\u00E9ho jazyka OS";
 
     /// <summary>
     /// English text for "Depending on the OS language" setting.
     /// </summary>
-    private const string EnglishOSLanguageText = "Depending on the OS language";
+    private const string englishOSLanguageText = "Depending on the OS language";
 
     /// <summary>
     /// Gets or sets the current culture information.
@@ -44,19 +44,19 @@ public static class AppLangHelper
     /// Languages that the user can select manually.
     /// Key is the language abbreviation, value is its full name.
     /// </summary>
-    private static readonly Dictionary<string, string> FixedLanguages = new();
+    private static readonly Dictionary<string, string> fixedLanguages = new();
 
     /// <summary>
     /// System language texts.
     /// Key is the two-character language name, value contains texts like "Depending on the OS language".
     /// </summary>
-    private static readonly Dictionary<string, List<string>> SystemLanguages = new();
+    private static readonly Dictionary<string, List<string>> systemLanguages = new();
 
     /// <summary>
     /// Language code mappings.
     /// Key is the two-character language name, value is the numeric code used in AppLang class.
     /// </summary>
-    private static Dictionary<string, byte> LanguageCodes = new();
+    private static Dictionary<string, byte> languageCodes = new();
 
     /// <summary>
     /// Gets or sets the currently selected language in the combo box.
@@ -65,40 +65,40 @@ public static class AppLangHelper
 
     static AppLangHelper()
     {
-        FixedLanguages.Add("cs", "\u010Ce\u0161tina");
-        FixedLanguages.Add("en", Translate.FromKey(XlfKeys.English));
+        fixedLanguages.Add("cs", "\u010Ce\u0161tina");
+        fixedLanguages.Add("en", Translate.FromKey(XlfKeys.English));
         var systemLanguageCS = new List<string>();
-        systemLanguageCS.Add(CzechOSLanguageText);
+        systemLanguageCS.Add(czechOSLanguageText);
         var systemLanguageEN = new List<string>();
-        systemLanguageEN.Add(EnglishOSLanguageText);
-        SystemLanguages.Add("cs", systemLanguageCS);
-        SystemLanguages.Add("en", systemLanguageEN);
+        systemLanguageEN.Add(englishOSLanguageText);
+        systemLanguages.Add("cs", systemLanguageCS);
+        systemLanguages.Add("en", systemLanguageEN);
     }
 
     /// <summary>
     /// Returns the language name for display (e.g., in a ComboBox for language selection).
     /// If the language type is not fixed, returns the appropriate text based on OS language.
     /// </summary>
-    /// <param name="actual">The current AppLang instance.</param>
+    /// <param name="appLang">The current AppLang instance.</param>
     /// <returns>The display name for the language.</returns>
-    public static string ToString(AppLang actual)
+    public static string ToString(AppLang appLang)
     {
         var result = "";
-        if (actual.Type == FixedLanguageType)
+        if (appLang.Type == fixedLanguageType)
         {
-            result = FixedLanguages[((Langs)actual.Language).ToString()];
+            result = fixedLanguages[((Langs)appLang.Language).ToString()];
         }
         else
         {
             CultureInfo? dependingCulture = null;
-            if (actual.Language == DependingOnLanguage)
+            if (appLang.Language == dependingOnLanguage)
                 dependingCulture = CurrentUICulture;
             else
                 dependingCulture = CurrentCulture;
 
             if (dependingCulture == null)
             {
-                if (actual.Language == DependingOnLanguage)
+                if (appLang.Language == dependingOnLanguage)
                     dependingCulture = CultureInfo.CurrentUICulture;
                 else
                     dependingCulture = CultureInfo.CurrentCulture;
@@ -106,15 +106,15 @@ public static class AppLangHelper
 
             if (dependingCulture.TwoLetterISOLanguageName == "cs")
             {
-                if (actual.Language == 0)
-                    result = CzechOSLanguageText + "-" +
-                         FixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
+                if (appLang.Language == 0)
+                    result = czechOSLanguageText + "-" +
+                         fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
             }
             else
             {
-                if (actual.Language == 0)
-                    result = EnglishOSLanguageText + "-" +
-                         FixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
+                if (appLang.Language == 0)
+                    result = englishOSLanguageText + "-" +
+                         fixedLanguages[CultureInfo.CurrentUICulture.TwoLetterISOLanguageName];
             }
         }
 
@@ -130,16 +130,16 @@ public static class AppLangHelper
     public static Langs GetLang(string text)
     {
         var result = Langs.cs;
-        var actual = AppLangConverter.ConvertTo(text);
-        if (actual.Type == FixedLanguageType)
+        var appLang = AppLangConverter.ConvertTo(text);
+        if (appLang.Type == fixedLanguageType)
         {
-            result = (Langs)actual.Language;
+            result = (Langs)appLang.Language;
         }
         else
         {
-            if (actual.Language == 0)
-                result = GetLang2(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
-            else if (actual.Language == 1) result = GetLang2(CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
+            if (appLang.Language == 0)
+                result = GetLangFromCode(CultureInfo.CurrentUICulture.TwoLetterISOLanguageName);
+            else if (appLang.Language == 1) result = GetLangFromCode(CultureInfo.CurrentCulture.TwoLetterISOLanguageName);
         }
 
         return result;
@@ -150,7 +150,7 @@ public static class AppLangHelper
     /// </summary>
     /// <param name="languageCode">The two-letter language code.</param>
     /// <returns>The corresponding Langs enum value.</returns>
-    private static Langs GetLang2(string languageCode)
+    private static Langs GetLangFromCode(string languageCode)
     {
         var result = Langs.cs;
         if (Enum.TryParse(languageCode, out result)) return result;
@@ -164,8 +164,8 @@ public static class AppLangHelper
     /// <returns>The corresponding Langs enum value.</returns>
     public static Langs GetLang3(string languageCode)
     {
-        if (languageCode.Length == 5 && languageCode[2] == '-') return GetLang2(languageCode.Substring(0, 2));
-        return GetLang2(languageCode);
+        if (languageCode.Length == 5 && languageCode[2] == '-') return GetLangFromCode(languageCode.Substring(0, 2));
+        return GetLangFromCode(languageCode);
     }
 
     /// <summary>
@@ -173,7 +173,7 @@ public static class AppLangHelper
     /// </summary>
     /// <param name="lang">The language enum value.</param>
     /// <returns>The corresponding CultureInfo instance.</returns>
-    public static CultureInfo GetCi(Langs lang)
+    public static CultureInfo GetCultureInfo(Langs lang)
     {
         CultureInfo? cultureInfo = null;
         if (lang == Langs.cs)
@@ -205,9 +205,9 @@ public static class AppLangHelper
         var result = new List<AppLang>();
         SelectedInComboBox = null;
         byte index = 0;
-        foreach (var item in FixedLanguages)
+        foreach (var item in fixedLanguages)
         {
-            var appLang = new AppLang(FixedLanguageType, index);
+            var appLang = new AppLang(fixedLanguageType, index);
             if (SelectedInComboBox == null)
                 if (AppLangConverter.ConvertFrom(appLang) == settingsAppLang)
                     SelectedInComboBox = appLang;
@@ -218,9 +218,9 @@ public static class AppLangHelper
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
             index = 0;
-            foreach (var item in SystemLanguages["cs"])
+            foreach (var item in systemLanguages["cs"])
             {
-                var appLang = new AppLang(SystemLanguageType, index);
+                var appLang = new AppLang(systemLanguageType, index);
                 if (SelectedInComboBox == null)
                     if (AppLangConverter.ConvertFrom(appLang) == settingsAppLang)
                         SelectedInComboBox = appLang;
@@ -231,9 +231,9 @@ public static class AppLangHelper
         else
         {
             index = 0;
-            foreach (var item in SystemLanguages["en"])
+            foreach (var item in systemLanguages["en"])
             {
-                var appLang = new AppLang(SystemLanguageType, index);
+                var appLang = new AppLang(systemLanguageType, index);
                 if (SelectedInComboBox == null)
                     if (AppLangConverter.ConvertFrom(appLang) == settingsAppLang)
                         SelectedInComboBox = appLang;

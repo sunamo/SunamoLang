@@ -3546,3 +3546,4 @@ public enum KeysXlf
     WasCreatedListOfCachesWithNameColon,
     ToUseThisWebYouHaveToBeLogined
 }
+#pragma warning restore CS1591

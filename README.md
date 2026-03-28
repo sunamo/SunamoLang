@@ -1,6 +1,6 @@
 # SunamoLang
 
-Support for language, independent of translating solution
+Platform-independent language support library for .NET applications. Provides localization utilities, XLF (XLIFF) file processing, Czech language helpers, and culture management.
 
 ## Overview
 
@@ -10,27 +10,15 @@ SunamoLang is part of the Sunamo package ecosystem, providing modular, platform-
 
 ### Key Classes
 
-- **CountryLang**
-- **LocaleHelperLang**
-- **AppLang**
-- **AppLangHelper**
-- **AppLangHelperTests**
-- **AppLangConverter**
-- **CzechHelper**
-- **ResourcesDuo**
-
-### Key Methods
-
-- `Init()`
-- `GetCountryForLang2()`
-- `GetLangForCountry2()`
-- `GetLangForCountry()`
-- `ToString()`
-- `GetLang()`
-- `GetLang3()`
-- `GetCi()`
-- `ItemsToAddToComboBox()`
-- `GetLang3Test()`
+- **CountryLang** - Language-to-country code mapping
+- **LocaleHelperLang** - Locale conversion operations
+- **AppLang** - Application language settings model
+- **AppLangHelper** - Language settings and culture management
+- **AppLangConverter** - AppLang to/from string conversion
+- **CzechHelper** - Czech language text processing
+- **TranslateDictionary** - Translation key-value storage with auto-reload
+- **XlfResourcesH** - XLF resource loading and processing
+- **ResourcesDuo** - Strongly-typed resource manager
 
 ## Installation
 
@@ -40,15 +28,13 @@ dotnet add package SunamoLang
 
 ## Dependencies
 
-- **Microsoft.Extensions.Logging.Abstractions** (v9.0.3)
+- **Microsoft.Extensions.Logging.Abstractions** (v10.0.2)
 
 ## Package Information
 
 - **Package Name**: SunamoLang
-- **Version**: 25.6.7.1
-- **Target Framework**: net9.0
-- **Category**: Platform-Independent NuGet Package
-- **Source Files**: 40
+- **Target Frameworks**: net10.0, net9.0, net8.0
+- **License**: MIT
 
 ## Related Packages
 
@@ -56,4 +42,4 @@ This package is part of the Sunamo package ecosystem. For more information about
 
 ## License
 
-See the repository root for license information.
+MIT

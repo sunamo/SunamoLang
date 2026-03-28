@@ -30,7 +30,7 @@ internal class SHSplit
         var result = text.Split(delimiters, stringSplitOptions).ToList();
         CA.Trim(result);
         if (stringSplitOptions == StringSplitOptions.RemoveEmptyEntries)
-            result = result.Where(delimiter => delimiter.Trim() != string.Empty).ToList();
+            result = result.Where(entry => entry.Trim() != string.Empty).ToList();
 
         return result;
     }

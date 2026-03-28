@@ -14,10 +14,9 @@ public class XlfDocumentLang
     /// Loads XML content into the document.
     /// </summary>
     /// <param name="content">The XML content to load.</param>
-#pragma warning disable
+    [SuppressMessage("Style", "IDE0060:Remove unused parameter", Justification = "Method is a stub for future implementation")]
     public void LoadXml(string content)
     {
         ThrowEx.NotImplementedMethod();
     }
-#pragma warning enable
 }

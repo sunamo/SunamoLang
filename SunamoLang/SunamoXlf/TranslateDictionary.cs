@@ -24,8 +24,8 @@ public class TranslateDictionary : IDictionary<string, string>
     /// Gets or sets the localization languages configuration.
     /// </summary>
     public static LocalizationLanguages? LocalizationLanguages { get; set; } = null;
-    private readonly Dictionary<string, string> _dictionary = new();
-    private readonly Langs _language = Langs.en;
+    private readonly Dictionary<string, string> dictionary = new();
+    private readonly Langs language = Langs.en;
 
     /// <summary>
     /// Initializes a new instance of the TranslateDictionary class.
@@ -33,7 +33,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <param name="language">The language for this dictionary.</param>
     public TranslateDictionary(Langs language)
     {
-        _language = language;
+        this.language = language;
     }
 
     /// <summary>
@@ -56,34 +56,34 @@ public class TranslateDictionary : IDictionary<string, string>
         {
             if (ReturnXlfKey) return key;
 
-            if (!_dictionary.ContainsKey(key))
+            if (!dictionary.ContainsKey(key))
             {
                 if (ReloadIfKeyWontBeFound == null) return ThrowNotFoundError(key, "ReloadIfKeyWontBeFound is null.");
-                var reloadedKey = ReloadIfKeyWontBeFound(key, LocalizationLanguages!);
-                if (!_dictionary.ContainsKey(key))
+                ReloadIfKeyWontBeFound(key, LocalizationLanguages!);
+                if (!dictionary.ContainsKey(key))
                     return ThrowNotFoundError(key, string.Empty);
             }
 
-            var value = _dictionary[key];
+            var value = dictionary[key];
             return value;
         }
-        set => _dictionary[key] = value;
+        set => dictionary[key] = value;
     }
 
     /// <summary>
     /// Gets the collection of keys in the dictionary.
     /// </summary>
-    public ICollection<string> Keys => _dictionary.Keys;
+    public ICollection<string> Keys => dictionary.Keys;
 
     /// <summary>
     /// Gets the collection of values in the dictionary.
     /// </summary>
-    public ICollection<string> Values => _dictionary.Values;
+    public ICollection<string> Values => dictionary.Values;
 
     /// <summary>
     /// Gets the number of key-value pairs in the dictionary.
     /// </summary>
-    public int Count => _dictionary.Count;
+    public int Count => dictionary.Count;
 
     /// <summary>
     /// Gets a value indicating whether the dictionary is read-only.
@@ -97,7 +97,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <param name="value">The translated string.</param>
     public void Add(string key, string value)
     {
-        _dictionary.Add(key, value);
+        dictionary.Add(key, value);
     }
 
     /// <summary>
@@ -106,7 +106,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <param name="item">The key-value pair to add.</param>
     public void Add(KeyValuePair<string, string> item)
     {
-        _dictionary.Add(item.Key, item.Value);
+        dictionary.Add(item.Key, item.Value);
     }
 
     /// <summary>
@@ -114,7 +114,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// </summary>
     public void Clear()
     {
-        _dictionary.Clear();
+        dictionary.Clear();
     }
 
     /// <summary>
@@ -124,7 +124,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <returns>True if the dictionary contains the key; otherwise, false.</returns>
     public bool Contains(KeyValuePair<string, string> item)
     {
-        return _dictionary.ContainsKey(item.Key);
+        return dictionary.ContainsKey(item.Key);
     }
 
     /// <summary>
@@ -134,7 +134,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <returns>True if the dictionary contains the key; otherwise, false.</returns>
     public bool ContainsKey(string key)
     {
-        return _dictionary.ContainsKey(key);
+        return dictionary.ContainsKey(key);
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <returns>An enumerator for the dictionary.</returns>
     public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
     {
-        return _dictionary.GetEnumerator();
+        return dictionary.GetEnumerator();
     }
 
     /// <summary>
@@ -163,7 +163,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <returns>True if the entry was removed; otherwise, false.</returns>
     public bool Remove(string key)
     {
-        return _dictionary.Remove(key);
+        return dictionary.Remove(key);
     }
 
     /// <summary>
@@ -173,7 +173,7 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <returns>True if the entry was removed; otherwise, false.</returns>
     public bool Remove(KeyValuePair<string, string> item)
     {
-        return _dictionary.Remove(item.Key);
+        return dictionary.Remove(item.Key);
     }
 
     /// <summary>
@@ -184,21 +184,16 @@ public class TranslateDictionary : IDictionary<string, string>
     /// <returns>True if the dictionary contains an entry with the specified key; otherwise, false.</returns>
     public bool TryGetValue(string key, out string value)
     {
-        return _dictionary.TryGetValue(key, out value!);
+        return dictionary.TryGetValue(key, out value!);
     }
 
     IEnumerator IEnumerable.GetEnumerator()
     {
-        return _dictionary.GetEnumerator();
+        return dictionary.GetEnumerator();
     }
 
     private string ThrowNotFoundError(string key, string customError)
     {
-        if (string.IsNullOrEmpty(customError))
-        {
-            throw new Exception(customError + ". " + key + " is not in " + _language + " dictionary");
-        }
-
-        throw new Exception(customError + ". " + key + " is not in " + _language + " dictionary");
+        throw new Exception(customError + ". " + key + " is not in " + language + " dictionary");
     }
 }

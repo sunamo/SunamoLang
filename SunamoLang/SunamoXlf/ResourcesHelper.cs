@@ -9,7 +9,7 @@ public class ResourcesHelper
 {
     #region For easy copy
 
-    private ResourceManager? _resourceManager;
+    private ResourceManager? resourceManager;
 
     private ResourcesHelper()
     {
@@ -24,7 +24,7 @@ public class ResourcesHelper
     public static ResourcesHelper Create(string resourceClass, Assembly assembly)
     {
         var resourcesHelper = new ResourcesHelper();
-        resourcesHelper._resourceManager = new ResourceManager(resourceClass, assembly);
+        resourcesHelper.resourceManager = new ResourceManager(resourceClass, assembly);
         return resourcesHelper;
     }
 
@@ -36,7 +36,7 @@ public class ResourcesHelper
     [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public string? GetString(string name)
     {
-        return _resourceManager?.GetString(name);
+        return resourceManager?.GetString(name);
     }
 
     /// <summary>
@@ -46,7 +46,7 @@ public class ResourcesHelper
     /// <returns>The byte array resource converted to a UTF-8 string.</returns>
     public string GetByteArrayAsString(string name)
     {
-        var byteArray = _resourceManager?.GetObject(name) as byte[];
+        var byteArray = resourceManager?.GetObject(name) as byte[];
         return byteArray != null ? Encoding.UTF8.GetString(byteArray) : string.Empty;
     }
 

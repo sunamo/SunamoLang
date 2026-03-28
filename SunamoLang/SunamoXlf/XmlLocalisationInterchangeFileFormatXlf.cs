@@ -22,8 +22,8 @@ public class XmlLocalisationInterchangeFileFormatXlf
             parts = SHSplit.SplitChar(filename, '.', '-');
         var subtractCount = 2;
         if (filename.Contains("min")) subtractCount++;
-        var beforeLast = parts[parts.Count - subtractCount].ToLower();
-        if (beforeLast.StartsWith("cs")) return Langs.cs;
+        var languageCodePart = parts[parts.Count - subtractCount].ToLower();
+        if (languageCodePart.StartsWith("cs")) return Langs.cs;
         return Langs.en;
     }
 

@@ -128,7 +128,6 @@ C5 BE";
 
         input = input.Replace("3D\"", "=\"");
 
-        //input = input.Replace("=3D", "=");
         input = input.Replace("\n", "");
         input = input.Replace("\r", "");
         input = input.Replace("\n", "");
@@ -138,14 +137,14 @@ C5 BE";
         input = input.Replace(":=", ":");
         input = input.Replace("==", "=");
 
-        // tohle můžu až na konci
+        // This must be done at the end
         input = input.Replace("=", ";3D");
         input = input.Replace("=", "");
         input = input.Replace(";3D", "=");
 
         input = input.Replace("=\"", ";\"");
         input = input.Replace("=", "");
-        // zde je chyba. nahrazuje to správně ale =\" se mi vloží i na konce hodnoty atributů.
+        // There is a bug here: it replaces correctly but =\"  gets inserted at the end of attribute values too.
         input = input.Replace(";\"", "=\"");
 
         return input;
@@ -160,16 +159,16 @@ C5 BE";
     {
         if (encoding == CzechEncodings.UTF_8 && isHex)
         {
-            var utf8hexL = SHGetLines.GetLines(utf8hex);
-            var czechLettersL = SHGetLines.GetLines(czechLetters);
+            var utf8HexLines = SHGetLines.GetLines(utf8hex);
+            var czechLetterLines = SHGetLines.GetLines(czechLetters);
 
-            ThrowEx.DifferentCountInLists("utf8hexL", utf8hexL, "czechLettersL", czechLettersL);
+            ThrowEx.DifferentCountInLists("utf8HexLines", utf8HexLines, "czechLetterLines", czechLetterLines);
 
-            CA.Prepend(" ", utf8hexL);
+            CA.Prepend(" ", utf8HexLines);
 
-            CA.Replace(utf8hexL, " ", "=");
+            CA.Replace(utf8HexLines, " ", "=");
 
-            for (var i = 0; i < czechLettersL.Count; i++) fromUtf8hex.Add(utf8hexL[i], czechLettersL[i]);
+            for (var i = 0; i < czechLetterLines.Count; i++) fromUtf8hex.Add(utf8HexLines[i], czechLetterLines[i]);
         }
     }
 

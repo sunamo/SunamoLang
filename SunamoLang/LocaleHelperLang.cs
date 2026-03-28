@@ -14,7 +14,6 @@ public class LocaleHelperLang : ILocaleHelper
     /// <returns>The country code (e.g., "CZ", "GB").</returns>
     public string GetCountryForLang2(string lang)
     {
-        // Easy copy = BCL enum parse
         var langEnum = (Langs)Enum.Parse(typeof(Langs), lang);
         switch (langEnum)
         {
@@ -53,12 +52,7 @@ public class LocaleHelperLang : ILocaleHelper
             if (cultureParts.Count > 1)
                 if (cultureParts[1] == country)
                     if (cultureParts[0].Length == 2)
-                        //ComplexInfoString cis = new ComplexInfoString(cultureParts[0]);
-                        //if (cis.QuantityLowerChars == 2)
-                        //{
-                        // Its not good idea because for en return AG
                         return cultureParts[0];
-            //}
         }
 
         return null;

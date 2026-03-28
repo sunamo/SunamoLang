@@ -1,20 +1,42 @@
-### SunamoLang
+# SunamoLang
 
-Part of PlatformIndependentNuGetPackages:
+Platform-independent language support library for .NET applications. Provides localization utilities, XLF (XLIFF) file processing, Czech language helpers, and culture management.
 
-- [nuget.org](https://www.nuget.org/profiles/sunamo)
-- [github.org](https://github.com/sunamo/PlatformIndependentNuGetPackages)
+## Features
 
-Another links:
+- **Language & Culture Management** - Convert between language codes, country codes, and CultureInfo objects
+- **XLF/XLIFF Support** - Load and process XLF localization files with translation dictionaries
+- **Czech Language Helpers** - Gender-aware greetings, surname analysis, encoding conversion
+- **Translation System** - Key-based translation with automatic resource reloading
+- **AppLang Settings** - Manage application language preferences with ComboBox integration
 
-- [Developer site](https://sunamo.cz)
+## Key Classes
 
-Request for new features / bug report / etc: [Mail](mailto:radek.jancik@sunamo.cz) or on GitHub
+| Class | Description |
+|---|---|
+| `AppLangHelper` | Application language settings and culture management |
+| `LocaleHelperLang` | Language-to-country and country-to-language conversion |
+| `CzechHelper` | Czech text processing (gender forms, encoding conversion) |
+| `TranslateDictionary` | Translation key-value storage with auto-reload |
+| `XlfResourcesH` | XLF resource loading and processing |
+| `CountryLang` | Language-to-country code mapping |
+
+## Installation
+
+```bash
+dotnet add package SunamoLang
+```
+
 ## Target Frameworks
 
-**TargetFrameworks:** `net10.0;net9.0;net8.0`
+`net10.0`, `net9.0`, `net8.0`
 
-**Reason:** Code uses C# 12.0 features (collection expressions, primary constructors) or dependencies requiring .NET 8.0+:
-- Collection expressions `[]` syntax requires C# 12.0 (net8.0+)
-- Primary constructors require C# 12.0 (net8.0+) 
-- Entity Framework Core 9.x requires net8.0+
+## Links
+
+- [NuGet](https://www.nuget.org/profiles/sunamo)
+- [GitHub](https://github.com/sunamo/PlatformIndependentNuGetPackages)
+- [Developer Site](https://sunamo.cz)
+
+## License
+
+MIT
