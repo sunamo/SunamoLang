@@ -88,10 +88,8 @@ internal class RH
     /// <param name="isIgnoringCase">Whether to perform case-insensitive name matching.</param>
     /// <param name="value">Unused parameter (reserved for symmetry with SetValue).</param>
     /// <returns>The member value, or null if not found.</returns>
-    internal static object? GetValue(string name, Type type, object instance, IList properties, bool isIgnoringCase, object? value)
-    {
-        return GetOrSetValue(name, type, instance, properties, isIgnoringCase, GetValue, value);
-    }
+    internal static object? GetValue(string name, Type type, object instance, IList properties, bool isIgnoringCase, object? value) =>
+        GetOrSetValue(name, type, instance, properties, isIgnoringCase, GetValue, value);
 
     /// <summary>
     /// Sets a value by member name with case sensitivity control.
@@ -103,10 +101,8 @@ internal class RH
     /// <param name="isIgnoringCase">Whether to perform case-insensitive name matching.</param>
     /// <param name="value">The value to set.</param>
     /// <returns>Null after successful operation.</returns>
-    internal static object? SetValue(string name, Type type, object instance, IList properties, bool isIgnoringCase, object value)
-    {
-        return GetOrSetValue(name, type, instance, properties, isIgnoringCase, SetValue, value);
-    }
+    internal static object? SetValue(string name, Type type, object instance, IList properties, bool isIgnoringCase, object value) =>
+        GetOrSetValue(name, type, instance, properties, isIgnoringCase, SetValue, value);
 
     /// <summary>
     /// Gets or sets a value by member name with case sensitivity control.

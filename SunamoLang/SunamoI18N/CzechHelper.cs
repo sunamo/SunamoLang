@@ -203,12 +203,9 @@ C5 BE";
     /// <returns>A formatted honorable greeting.</returns>
     public static string Honorable(bool isFemale, string greetingWord, string name)
     {
-        string formattedGreeting;
-
-        if (isFemale)
-            formattedGreeting = greetingWord + " " + Translate.FromKey(XlfKeys.Madam) + " " + name;
-        else
-            formattedGreeting = greetingWord + " " + Translate.FromKey(XlfKeys.Sir) + " " + name;
+        var formattedGreeting = isFemale
+            ? $"{greetingWord} {Translate.FromKey(XlfKeys.Madam)} {name}"
+            : $"{greetingWord} {Translate.FromKey(XlfKeys.Sir)} {name}";
 
         return char.ToUpper(formattedGreeting[0]) + formattedGreeting.Substring(1);
     }

@@ -23,9 +23,9 @@ namespace SunamoLang.SunamoI18N;
 [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
 public class ResourcesDuo {
-    
+
     private static global::System.Resources.ResourceManager resourceMan;
-    
+
     private static global::System.Globalization.CultureInfo resourceCulture;
 
     /// <summary>
