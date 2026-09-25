@@ -1,12 +1,24 @@
 namespace SunamoLang.SunamoXlf;
 
-// In sunamo, XliffParser and fmdev.ResX are not available as they require .NET Framework due to CodeDom.
+/// <summary>
+/// Helper class for XLF (XLIFF) resource loading and processing.
+/// In sunamo, XliffParser and fmdev.ResX are not available as they require .NET Framework due to CodeDom.
+/// </summary>
 public class XlfResourcesH
 {
+    /// <summary>
+    /// Gets or sets whether the XLF resources have been initialized.
+    /// </summary>
     public static bool Initialized { get; set; } = false;
 
     private static string? previousKey;
 
+    /// <summary>
+    /// Constructs the full path to a Sunamo XLF file based on language and base path.
+    /// </summary>
+    /// <param name="lang">The language identifier.</param>
+    /// <param name="basePathXlfFile">The base path to the XLF file without language suffix.</param>
+    /// <returns>The full path to the XLF file including language suffix and extension.</returns>
     public static string PathToXlfSunamo(Langs lang, string basePathXlfFile)
     {
         switch (lang)
@@ -25,6 +37,12 @@ public class XlfResourcesH
         return basePathXlfFile + ".xlf";
     }
 
+    /// <summary>
+    /// Saves localization resources to the resource loader.
+    /// </summary>
+    /// <param name="basePathToSunamoProject">The base path to the Sunamo project.</param>
+    /// <param name="localizationLanguages">The localization languages containing Czech and English content.</param>
+    /// <returns>The resource key that was processed.</returns>
     public static string? SaveResouresToRL(string basePathToSunamoProject, LocalizationLanguages localizationLanguages)
     {
         return SaveResouresToRL<string, string>(null, basePathToSunamoProject, localizationLanguages);
@@ -32,6 +50,15 @@ public class XlfResourcesH
 
     #region Main worker
 
+    /// <summary>
+    /// Saves localization resources to the resource loader with generic type parameters.
+    /// </summary>
+    /// <typeparam name="StorageFolder">The storage folder type (unused, for compatibility).</typeparam>
+    /// <typeparam name="StorageFile">The storage file type (unused, for compatibility).</typeparam>
+    /// <param name="key">The resource key to process.</param>
+    /// <param name="basePath">The base path to the project.</param>
+    /// <param name="localizationLanguages">The localization languages containing Czech and English content.</param>
+    /// <returns>The resource key that was processed, or null if already processed.</returns>
     public static string? SaveResouresToRL<StorageFolder, StorageFile>(string? key, string basePath,
         LocalizationLanguages localizationLanguages)
     {
@@ -44,6 +71,11 @@ public class XlfResourcesH
         return key;
     }
 
+    /// <summary>
+    /// Extracts all translation units from an XLF document into a dictionary.
+    /// </summary>
+    /// <param name="document">The XLF document to process.</param>
+    /// <returns>A dictionary mapping translation IDs to their target values.</returns>
     public static Dictionary<string, string> GetTransUnits(XlfDocumentLang document)
     {
         var result = new Dictionary<string, string>();

@@ -1,9 +1,17 @@
 namespace SunamoLang;
 
+/// <summary>
+/// Helper class for locale operations, converting between language and country codes.
+/// </summary>
 public class LocaleHelperLang : ILocaleHelper
 {
     #region For easy copy
 
+    /// <summary>
+    /// Gets the country code for the specified language.
+    /// </summary>
+    /// <param name="lang">The language code (e.g., "cs", "en").</param>
+    /// <returns>The country code (e.g., "CZ", "GB").</returns>
     public string GetCountryForLang2(string lang)
     {
         var langEnum = (Langs)Enum.Parse(typeof(Langs), lang);
@@ -17,6 +25,11 @@ public class LocaleHelperLang : ILocaleHelper
         }
     }
 
+    /// <summary>
+    /// Gets the language code for the specified country.
+    /// </summary>
+    /// <param name="country">The country code (e.g., "CZ", "GB").</param>
+    /// <returns>The language code (e.g., "cs", "en"), or null if not found.</returns>
     public string? GetLangForCountry2(string country)
     {
         foreach (var item in CountryLang.LanguageToCountryMap)
@@ -25,6 +38,11 @@ public class LocaleHelperLang : ILocaleHelper
         return null;
     }
 
+    /// <summary>
+    /// Gets the language code for the specified country by querying all available cultures.
+    /// </summary>
+    /// <param name="country">The country code (e.g., "cz", "gb").</param>
+    /// <returns>The language code (e.g., "cs", "en"), or null if not found.</returns>
     public static string? GetLangForCountry(string country)
     {
         country = country.ToLower();

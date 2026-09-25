@@ -1,5 +1,8 @@
 namespace SunamoLang.SunamoI18N;
 
+/// <summary>
+/// Helper class for Czech language text processing and transformations.
+/// </summary>
 public class CzechHelper
 {
     private const string utf8hex = @"C3 81
@@ -94,11 +97,23 @@ C5 BE";
 
     private static readonly Dictionary<string, string> fromUtf8hex = new();
 
+    /// <summary>
+    /// Replaces characters in HTML content from UTF-8 hex encoding to Czech characters.
+    /// </summary>
+    /// <param name="input">The input HTML string to process.</param>
+    /// <returns>The processed HTML string with Czech characters.</returns>
     public static string ReplaceInHtmlFrom_UTF_8_Hex(string input)
     {
         return ReplaceInHtmlFrom(CzechEncodings.UTF_8, true, input);
     }
 
+    /// <summary>
+    /// Replaces characters in HTML content from the specified encoding.
+    /// </summary>
+    /// <param name="encoding">The Czech encoding to use.</param>
+    /// <param name="isHex">Whether the encoding is in hexadecimal format.</param>
+    /// <param name="input">The input HTML string to process.</param>
+    /// <returns>The processed HTML string.</returns>
     public static string ReplaceInHtmlFrom(CzechEncodings encoding, bool isHex, string input)
     {
         if (encoding == CzechEncodings.UTF_8 && isHex)
@@ -135,6 +150,11 @@ C5 BE";
         return input;
     }
 
+    /// <summary>
+    /// Initializes the encoding conversion tables.
+    /// </summary>
+    /// <param name="encoding">The Czech encoding to initialize.</param>
+    /// <param name="isHex">Whether the encoding is in hexadecimal format.</param>
     public static void Init(CzechEncodings encoding, bool isHex)
     {
         if (encoding == CzechEncodings.UTF_8 && isHex)
@@ -152,18 +172,35 @@ C5 BE";
         }
     }
 
+    /// <summary>
+    /// Returns the Czech greeting "Dear" in the appropriate gender form.
+    /// </summary>
+    /// <param name="isFemale">True for female form, false for male form.</param>
+    /// <returns>The gendered greeting word.</returns>
     public static string Dear(bool isFemale)
     {
         if (isFemale) return "Mil\u00E1";
         return "Mil\u00FD";
     }
 
+    /// <summary>
+    /// Returns the Czech greeting "Esteemed" in the appropriate gender form.
+    /// </summary>
+    /// <param name="isFemale">True for female form, false for male form.</param>
+    /// <returns>The gendered greeting word.</returns>
     public static string Esteemed(bool isFemale)
     {
         if (isFemale) return "Vážená";
         return "Vážený";
     }
 
+    /// <summary>
+    /// Creates a formal honorable greeting with name.
+    /// </summary>
+    /// <param name="isFemale">True for female form, false for male form.</param>
+    /// <param name="greetingWord">The greeting word to use (e.g., "Dear", "Esteemed").</param>
+    /// <param name="name">The person's name.</param>
+    /// <returns>A formatted honorable greeting.</returns>
     public static string Honorable(bool isFemale, string greetingWord, string name)
     {
         var formattedGreeting = isFemale
@@ -173,6 +210,11 @@ C5 BE";
         return char.ToUpper(formattedGreeting[0]) + formattedGreeting.Substring(1);
     }
 
+    /// <summary>
+    /// Determines gender from a Czech surname.
+    /// </summary>
+    /// <param name="surname">The surname to analyze.</param>
+    /// <returns>True if the surname indicates female gender, false otherwise.</returns>
     public static bool GetSexFromSurname(string surname)
     {
         if (surname.EndsWith("ova") || surname.EndsWith("á")) return true;

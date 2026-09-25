@@ -1,7 +1,15 @@
 namespace SunamoLang.SunamoI18N;
 
+/// <summary>
+/// Provides translation functionality for localized keys.
+/// </summary>
 public class Translate
 {
+    /// <summary>
+    /// Translates a localization key to its corresponding text.
+    /// </summary>
+    /// <param name="key">The localization key to translate.</param>
+    /// <returns>The translated text corresponding to the key.</returns>
     public static string FromKey(string key)
     {
         switch (key)
