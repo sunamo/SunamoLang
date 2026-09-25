@@ -1,8 +1,5 @@
 namespace SunamoLang._sunamo;
 
-/// <summary>
-/// XLF localization key constants.
-/// </summary>
 internal class XlfKeys
 {
     internal const string IsNotInWindowsPathFormat = "isNotInWindowsPathFormat";
