@@ -31,8 +31,5 @@ public class AppLang
     /// Returns a string representation of this AppLang instance.
     /// </summary>
     /// <returns>String representation of the instance.</returns>
-    public override string ToString()
-    {
-        return AppLangHelper.ToString(this);
-    }
+    public override string ToString() => AppLangHelper.ToString(this);
 }

@@ -70,7 +70,7 @@ internal partial class ThrowEx
     /// <returns>The fully qualified name of the type and method.</returns>
     static string FullNameOfExecutedCode(object type, string methodName, bool isFromThrowEx = false)
     {
-        if (methodName == null)
+        if (methodName is null)
         {
             int depth = 2;
             if (isFromThrowEx)

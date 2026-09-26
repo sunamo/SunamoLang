@@ -62,6 +62,7 @@ public class XlfResourcesH
     public static string? SaveResouresToRL<StorageFolder, StorageFile>(string? key, string basePath,
         LocalizationLanguages localizationLanguages)
     {
+        _ = basePath;
         if (previousKey == key && previousKey != null) return null;
         previousKey = key;
         ProcessXlfContent(Langs.cs, localizationLanguages.Cs);

@@ -19,15 +19,13 @@ public static class AppLangHelper
     /// Language-dependent constant (value: 0).
     /// </summary>
     private const byte dependingOnLanguage = 0;
-
     /// <summary>
     /// Czech text for "Depending on the OS language" setting.
     /// </summary>
-    private const string czechOSLanguageText = "Podle nastaven\u00E9ho jazyka OS";
-
     /// <summary>
     /// English text for "Depending on the OS language" setting.
     /// </summary>
+    private const string czechOSLanguageText = "Podle nastaveného jazyka OS";
     private const string englishOSLanguageText = "Depending on the OS language";
 
     /// <summary>
@@ -96,7 +94,7 @@ public static class AppLangHelper
             else
                 dependingCulture = CurrentCulture;
 
-            if (dependingCulture == null)
+            if (dependingCulture is null)
             {
                 if (appLang.Language == dependingOnLanguage)
                     dependingCulture = CultureInfo.CurrentUICulture;
@@ -208,7 +206,7 @@ public static class AppLangHelper
         foreach (var item in fixedLanguages)
         {
             var appLang = new AppLang(fixedLanguageType, index);
-            if (SelectedInComboBox == null)
+            if (SelectedInComboBox is null)
                 if (AppLangConverter.ConvertFrom(appLang) == settingsAppLang)
                     SelectedInComboBox = appLang;
             result.Add(appLang);
@@ -221,7 +219,7 @@ public static class AppLangHelper
             foreach (var item in systemLanguages["cs"])
             {
                 var appLang = new AppLang(systemLanguageType, index);
-                if (SelectedInComboBox == null)
+                if (SelectedInComboBox is null)
                     if (AppLangConverter.ConvertFrom(appLang) == settingsAppLang)
                         SelectedInComboBox = appLang;
                 result.Add(appLang);
@@ -234,7 +232,7 @@ public static class AppLangHelper
             foreach (var item in systemLanguages["en"])
             {
                 var appLang = new AppLang(systemLanguageType, index);
-                if (SelectedInComboBox == null)
+                if (SelectedInComboBox is null)
                     if (AppLangConverter.ConvertFrom(appLang) == settingsAppLang)
                         SelectedInComboBox = appLang;
                 result.Add(appLang);

@@ -11,11 +11,9 @@ internal class SHSplit
     /// <param name="text">The text to split.</param>
     /// <param name="delimiters">The character delimiters.</param>
     /// <returns>A list of split strings.</returns>
-    internal static List<string> SplitChar(string text, params char[] delimiters)
-    {
-        return Split(StringSplitOptions.RemoveEmptyEntries, text,
+    internal static List<string> SplitChar(string text, params char[] delimiters) =>
+        Split(StringSplitOptions.RemoveEmptyEntries, text,
             delimiters.ToList().ConvertAll(delimiter => delimiter.ToString()).ToArray());
-    }
 
     /// <summary>
     /// Splits a string by string delimiters with options.

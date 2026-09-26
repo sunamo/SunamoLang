@@ -12,10 +12,8 @@ internal sealed partial class Exceptions
     /// </summary>
     /// <param name="prefix">The prefix text to prepend to exception messages.</param>
     /// <returns>Empty string if prefix is null or whitespace, otherwise prefix followed by colon and space.</returns>
-    internal static string CheckBefore(string prefix)
-    {
-        return string.IsNullOrWhiteSpace(prefix) ? string.Empty : prefix + ": ";
-    }
+    internal static string CheckBefore(string prefix) =>
+        string.IsNullOrWhiteSpace(prefix) ? string.Empty : prefix + ": ";
 
     /// <summary>
     /// Determines the location of an exception in the call stack.
@@ -58,8 +56,8 @@ internal sealed partial class Exceptions
     /// <param name="methodName">Output: the method name.</param>
     internal static void TypeAndMethodName(string stackTraceLine, out string type, out string methodName)
     {
-        var methodCall = stackTraceLine.Split("at ")[1].Trim();
-        var fullMethodPath = methodCall.Split("(")[0];
+        var methodCall = stackTraceLine.Split(new[] { "at " }, StringSplitOptions.None)[1].Trim();
+        var fullMethodPath = methodCall.Split(new[] { "(" }, StringSplitOptions.None)[0];
         var nameParts = fullMethodPath.Split(new char[] { '.' }, StringSplitOptions.RemoveEmptyEntries).ToList();
         methodName = nameParts[^1];
         nameParts.RemoveAt(nameParts.Count - 1);
@@ -75,12 +73,11 @@ internal sealed partial class Exceptions
     {
         StackTrace stackTrace = new();
         var methodBase = stackTrace.GetFrame(frameDepth)?.GetMethod();
-        if (methodBase == null)
+        if (methodBase is null)
         {
             return "Method name cannot be get";
         }
-        var methodName = methodBase.Name;
-        return methodName;
+        return methodBase.Name;
     }
     #endregion
 
@@ -92,20 +89,16 @@ internal sealed partial class Exceptions
     /// <param name="prefix">The prefix text to prepend.</param>
     /// <param name="message">The exception message.</param>
     /// <returns>The formatted exception message.</returns>
-    internal static string? Custom(string prefix, string message)
-    {
-        return CheckBefore(prefix) + message;
-    }
+    internal static string? Custom(string prefix, string message) =>
+        CheckBefore(prefix) + message;
 
     /// <summary>
     /// Creates a "not implemented method" exception message.
     /// </summary>
     /// <param name="prefix">The prefix text to prepend.</param>
     /// <returns>The formatted exception message.</returns>
-    internal static string? NotImplementedMethod(string prefix)
-    {
-        return CheckBefore(prefix) + "Not implemented method.";
-    }
+    internal static string? NotImplementedMethod(string prefix) =>
+        CheckBefore(prefix) + "Not implemented method.";
     #endregion
 
     /// <summary>

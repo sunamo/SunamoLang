@@ -41,10 +41,8 @@ internal class CA
     /// <param name="oldValue">The substring to replace.</param>
     /// <param name="newValue">The replacement substring.</param>
     /// <returns>The modified string.</returns>
-    internal static string Replace(string text, string oldValue, string newValue)
-    {
-        return text.Replace(oldValue, newValue);
-    }
+    internal static string Replace(string text, string oldValue, string newValue) =>
+        text.Replace(oldValue, newValue);
 
     /// <summary>
     /// Replaces all occurrences of a substring in all strings in a list.
