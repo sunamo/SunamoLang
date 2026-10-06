@@ -2,14 +2,8 @@ using System.Xml.Linq;
 
 namespace SunamoLang._public;
 
-/// <summary>
-/// Represents an XLF (XLIFF) document for language localization.
-/// </summary>
 public class XlfDocumentLang
 {
-    /// <summary>
-    /// Gets or sets the collection of XLF files in this document.
-    /// </summary>
     public IEnumerable<XlfFileLang> Files { get; set; } = Array.Empty<XlfFileLang>();
 
     /// <summary>

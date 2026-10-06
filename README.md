@@ -1,5 +1,10 @@
 # SunamoLang
 
+## Short description
+
+Knihovna podpory jazyků pro .NET aplikace: lokalizační nástroje, zpracování souborů XLF (XLIFF), pomocné funkce pro češtinu a správa kultur. Obsahuje Runner a testy.
+
+
 Platform-independent language support library for .NET applications. Provides localization utilities, XLF (XLIFF) file processing, Czech language helpers, and culture management.
 
 ## Overview
