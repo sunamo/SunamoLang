@@ -1,6 +1,5 @@
 namespace SunamoLang.SunamoXlf;
 
-// In sunamo, XliffParser and fmdev.ResX are not available as they require .NET Framework due to CodeDom.
 public class XlfResourcesH
 {
     public static bool Initialized { get; set; } = false;
