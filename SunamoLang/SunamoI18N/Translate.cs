@@ -6,11 +6,11 @@ public class Translate
     {
         switch (key)
         {
-            case XlfKeys.IsNotInWindowsPathFormat:
+            case "Is not in windows path format":
                 return "is not in Windows Path format";
-            case XlfKeys.NotImplementedCasePublicProgramErrorPleaseContactDeveloper:
+            case "Not implemented case public program error please contact developer":
                 return "Not implemented case. public program error. Please contact developer";
-            case XlfKeys.DifferentCountElementsInCollection:
+            case "Different count elements in collection":
                 return "Different count elements in collection";
             default:
                 ThrowEx.NotImplementedCase(key);

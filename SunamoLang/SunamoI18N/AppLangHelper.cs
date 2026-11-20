@@ -35,7 +35,7 @@ public static class AppLangHelper
     static AppLangHelper()
     {
         fixedLanguages.Add("cs", "Čeština");
-        fixedLanguages.Add("en", Translate.FromKey(XlfKeys.English));
+        fixedLanguages.Add("en", "English");
         var systemLanguageCS = new List<string>();
         systemLanguageCS.Add(czechOSLanguageText);
         var systemLanguageEN = new List<string>();
