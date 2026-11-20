@@ -16,6 +16,9 @@ namespace SunamoLang.SunamoI18N;
 // class via a tool like ResGen or Visual Studio.
 // To add or remove a member, edit your .ResX file then rerun ResGen
 // with the /str option, or rebuild your VS project.
+/// <summary>
+/// Represents the resources duo type.
+/// </summary>
 [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
 [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
 [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
@@ -25,10 +28,16 @@ public class ResourcesDuo {
 
     private static global::System.Globalization.CultureInfo resourceCulture;
 
+    /// <summary>
+    /// Initializes a new instance of the resources duo class.
+    /// </summary>
     [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
     public ResourcesDuo() {
     }
 
+    /// <summary>
+    /// Gets the resource manager.
+    /// </summary>
     [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
     public static global::System.Resources.ResourceManager ResourceManager {
         get {
@@ -40,6 +49,9 @@ public class ResourcesDuo {
         }
     }
 
+    /// <summary>
+    /// Gets the culture.
+    /// </summary>
     [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
     public static global::System.Globalization.CultureInfo Culture {
         get {
@@ -50,24 +62,36 @@ public class ResourcesDuo {
         }
     }
 
+    /// <summary>
+    /// Gets the html 5 boilerplate end.
+    /// </summary>
     public static string Html5BoilerplateEnd {
         get {
             return ResourceManager.GetString("Html5BoilerplateEnd", resourceCulture);
         }
     }
 
+    /// <summary>
+    /// Gets the html 5 boilerplate middle.
+    /// </summary>
     public static string Html5BoilerplateMiddle {
         get {
             return ResourceManager.GetString("Html5BoilerplateMiddle", resourceCulture);
         }
     }
 
+    /// <summary>
+    /// Gets the html 5 boilerplate start.
+    /// </summary>
     public static string Html5BoilerplateStart {
         get {
             return ResourceManager.GetString("Html5BoilerplateStart", resourceCulture);
         }
     }
 
+    /// <summary>
+    /// Gets the sunamo cs CZ min.
+    /// </summary>
     public static byte[] sunamo_cs_CZ_min {
         get {
             object obj = ResourceManager.GetObject("sunamo_cs_CZ_min", resourceCulture);
@@ -75,6 +99,9 @@ public class ResourcesDuo {
         }
     }
 
+    /// <summary>
+    /// Gets the sunamo en US min.
+    /// </summary>
     public static byte[] sunamo_en_US_min {
         get {
             object obj = ResourceManager.GetObject("sunamo_en_US_min", resourceCulture);

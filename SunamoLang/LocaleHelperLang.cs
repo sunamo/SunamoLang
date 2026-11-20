@@ -1,9 +1,17 @@
 namespace SunamoLang;
 
+/// <summary>
+/// Represents the locale helper lang type.
+/// </summary>
 public class LocaleHelperLang : ILocaleHelper
 {
     #region For easy copy
 
+    /// <summary>
+    /// Get country for lang 2.
+    /// </summary>
+    /// <param name="lang">The lang.</param>
+    /// <returns>The get country for lang 2 result.</returns>
     public string GetCountryForLang2(string lang)
     {
         var langEnum = (Langs)Enum.Parse(typeof(Langs), lang);
@@ -17,6 +25,11 @@ public class LocaleHelperLang : ILocaleHelper
         }
     }
 
+    /// <summary>
+    /// Get lang for country 2.
+    /// </summary>
+    /// <param name="country">The country.</param>
+    /// <returns>The get lang for country 2 result.</returns>
     public string? GetLangForCountry2(string country)
     {
         foreach (var item in CountryLang.LanguageToCountryMap)
@@ -25,6 +38,11 @@ public class LocaleHelperLang : ILocaleHelper
         return null;
     }
 
+    /// <summary>
+    /// Get lang for country.
+    /// </summary>
+    /// <param name="country">The country.</param>
+    /// <returns>The get lang for country result.</returns>
     public static string? GetLangForCountry(string country)
     {
         country = country.ToLower();
