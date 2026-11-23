@@ -2,8 +2,14 @@ using System.Xml.Linq;
 
 namespace SunamoLang._public;
 
+/// <summary>
+/// Represents the xlf document lang type.
+/// </summary>
 public class XlfDocumentLang
 {
+    /// <summary>
+    /// Gets or sets the files.
+    /// </summary>
     public IEnumerable<XlfFileLang> Files { get; set; } = Array.Empty<XlfFileLang>();
 
     /// <summary>
