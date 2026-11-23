@@ -3,7 +3,7 @@
     <TargetFrameworks>net10.0;net9.0;net8.0;netstandard2.0</TargetFrameworks>
     <LangVersion>latest</LangVersion>
     <Platforms>AnyCPU;x86</Platforms>
-    <Version>26.5.18.5</Version>
+    <Version>26.11.23.1</Version>
     <Description>Support for language, independent of translating solution</Description>
     <Authors>www.sunamo.cz</Authors>
     <Copyright>www.sunamo.cz</Copyright>
